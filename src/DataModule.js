@@ -27,7 +27,7 @@ const moduleArr = [
     {
         name: "Narcissistic Number",
         description: "",
-        route: "/apps-lib/timezone",
+        route: "",
     },
 ];
 
