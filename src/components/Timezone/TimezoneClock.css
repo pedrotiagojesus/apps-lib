@@ -1,0 +1,131 @@
+.timezone-clock {
+}
+
+.timezone-clock .clock-wrapper {
+    height: 300px;
+    position: relative;
+}
+
+.timezone-clock .clock {
+    width: 300px;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.2);
+    font-size: 24px;
+    color: #444;
+    text-align: center;
+}
+
+.timezone-clock .clock::after {
+    background: #aaa;
+    content: "";
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff;
+}
+
+.timezone-clock .hour_hand {
+    position: absolute;
+    width: 6px;
+    height: 60px;
+    background: #222;
+    top: 30%;
+    left: 49%;
+    transform-origin: bottom;
+}
+
+.timezone-clock .min_hand {
+    position: absolute;
+    width: 4px;
+    height: 80px;
+    background: #444;
+    top: 22.5%;
+    left: 49%;
+    transform-origin: bottom;
+}
+
+.timezone-clock .sec_hand {
+    position: absolute;
+    width: 2px;
+    height: 118px;
+    background: red;
+    top: 10.5%;
+    left: 50%;
+    transform-origin: bottom;
+}
+
+.timezone-clock .clock span {
+    position: absolute;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 700;
+}
+
+.timezone-clock .twelve {
+    top: 10px;
+    left: 46%;
+}
+
+.timezone-clock .one {
+    top: 10%;
+    right: 26%;
+}
+
+.timezone-clock .eleven {
+    top: 10%;
+    left: 26%;
+}
+
+.timezone-clock .two {
+    top: 25%;
+    right: 10%;
+}
+
+.timezone-clock .three {
+    right: 10px;
+    top: 46%;
+}
+
+.timezone-clock .four {
+    right: 30px;
+    top: 67%;
+}
+
+.timezone-clock .five {
+    right: 78px;
+    top: 80%;
+}
+
+.timezone-clock .six {
+    bottom: 10px;
+    left: 50%;
+}
+
+.timezone-clock .seven {
+    left: 80px;
+    top: 82%;
+}
+
+.timezone-clock .eight {
+    left: 30px;
+    top: 67%;
+}
+
+.timezone-clock .nine {
+    left: 10px;
+    top: 46%;
+}
+
+.timezone-clock .ten {
+    top: 25%;
+    left: 10%;
+}

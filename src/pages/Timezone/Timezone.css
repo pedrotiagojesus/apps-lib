@@ -1,0 +1,7 @@
+.form-select {
+    margin-bottom: 1rem;
+}
+
+.timezone-row {
+    --bs-gutter-y: 1.5rem;
+}

@@ -1,0 +1,41 @@
+#border-radius > .card {
+    height: calc(
+        100vh - var(--menu-horizontal-height) - var(--content-padding) -
+            var(--content-padding)
+    );
+}
+#border-radius .card-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#border-radius .border-radius-wrapper {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex: 1 1 auto;
+}
+
+#border-radius #preview {
+    border: 2px solid var(--bs-border-color);
+    flex-grow: 1;
+    border-radius: 0;
+    background-color: var(--bs-gray-500);
+}
+
+#border-radius input {
+    max-width: 75px;
+}
+
+#border-radius #display-code {
+    display: flex;
+    justify-content: center;
+}
+
+#border-radius #display-code pre {
+    max-width: 20rem;
+    border: 2px solid var(--bs-border-color);
+    padding: 1rem;
+    margin: 0;
+    min-width: 20rem;
+}

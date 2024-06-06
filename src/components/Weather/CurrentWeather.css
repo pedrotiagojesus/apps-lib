@@ -1,0 +1,18 @@
+#current-weather {
+    text-align: center;
+}
+
+#current-weather h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#current-weather img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+#current-weather p {
+    margin-bottom: 5px;
+}

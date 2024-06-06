@@ -1,0 +1,48 @@
+main > .content {
+    --content-padding: 1rem;
+    padding: calc(var(--menu-horizontal-height) + var(--content-padding))
+        var(--content-padding) var(--content-padding)
+        calc(var(--menu-vertical-width) + var(--content-padding));
+    min-height: 100vh;
+}
+
+main > .content .card {
+    --bs-card-bg: #fff;
+    --bs-card-height: 100%;
+}
+
+main > .content .card .card-header {
+    font-weight: 800;
+    font-size: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* SM */
+
+@media (min-width: 576px) {
+}
+
+/* MD */
+
+@media (min-width: 768px) {
+}
+
+/* LG  */
+
+@media (min-width: 992px) {
+    main > .content {
+        --content-padding: 2rem;
+    }
+}
+
+/* XL */
+
+@media (min-width: 1200px) {
+}
+
+/* XL */
+
+@media (min-width: 1400px) {
+}
