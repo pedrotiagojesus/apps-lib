@@ -12,9 +12,6 @@ const BorderRadiusPreviewer = () => {
     const [borderRadius, setBorderRadius] = useState("");
 
     useEffect(() => {
-        console.log(borderTopLeft);
-        console.log(borderTopLeft === NaN);
-
         if (borderTopLeft === "" || isNaN(borderTopLeft)) {
             setBorderTopLeft(0);
         }
