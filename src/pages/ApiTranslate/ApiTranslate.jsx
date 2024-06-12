@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import Select from "react-select";
 
 // CSS
 import "./ApiTranslate.css";
+
+// Components
 import Loading from "../../components/Loading/Loading";
 
 import languageList from "./Data";
@@ -10,11 +13,22 @@ import languageList from "./Data";
 const ApiTranslate = () => {
     const [loading, setLoading] = useState(false);
 
-    const [languageOriginalText, setLanguageOriginalText] = useState("PT");
-    const [languageTranlatedText, setLanguageTranlatedText] = useState("EN");
+    const [languageOriginalText, setLanguageOriginalText] = useState("");
+    const [languageTranlatedText, setLanguageTranlatedText] = useState("");
 
     const [originalText, setOriginalText] = useState("Olá");
     const [translatedText, setTranslatedText] = useState("");
+
+    // Language select box options
+    const langOptions = [];
+
+    useEffect(() => {
+        languageList.map((lang) =>
+            langOptions.push({ value: lang.iso3, label: lang.name })
+        );
+
+        console.log(languageOriginalText);
+    });
 
     const handleClick = async () => {
         setLoading(true);
@@ -59,23 +73,13 @@ const ApiTranslate = () => {
                             >
                                 Text to translate
                             </label>
-                            <select
-                                className="form-select w-auto mb-3"
-                                aria-label="Select the original language of the text"
-                                value={languageOriginalText}
-                                onChange={(e) =>
-                                    setLanguageOriginalText(e.target.value)
-                                }
-                            >
-                                {languageList.map((language) => (
-                                    <option
-                                        key={language.iso3}
-                                        value={language.iso3}
-                                    >
-                                        {language.name}
-                                    </option>
-                                ))}
-                            </select>
+                            <Select
+                                className=" mb-3"
+                                defaultValue={langOptions[0]}
+                                onChange={(e) => setLanguageOriginalText(e)}
+                                options={langOptions}
+                                required
+                            />
                         </div>
                         <textarea
                             className="form-control"
@@ -83,6 +87,7 @@ const ApiTranslate = () => {
                             rows="8"
                             value={originalText}
                             onInput={(e) => setOriginalText(e.target.value)}
+                            required
                         ></textarea>
                     </div>
 
@@ -103,23 +108,16 @@ const ApiTranslate = () => {
                             >
                                 Text translated
                             </label>
-                            <select
-                                className="form-select w-auto mb-3"
+                            <Select
+                                className=" mb-3"
                                 aria-label="Select the translated language of the text"
-                                value={languageTranlatedText}
+                                defaultValue={languageTranlatedText}
                                 onChange={(e) =>
-                                    setLanguageTranlatedText(e.target.value)
+                                    setLanguageTranlatedText(e.value)
                                 }
-                            >
-                                {languageList.map((language) => (
-                                    <option
-                                        key={language.iso3}
-                                        value={language.iso3}
-                                    >
-                                        {language.name}
-                                    </option>
-                                ))}
-                            </select>
+                                options={langOptions}
+                                required
+                            />
                         </div>
                         <textarea
                             className="form-control"

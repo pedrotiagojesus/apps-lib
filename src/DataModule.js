@@ -31,7 +31,8 @@ const moduleArr = [
     },
     {
         name: "Narcissistic Number",
-        description: "",
+        description:
+            "Is a number that is the sum of its own digits each raised to the power of the number of digits.",
         route: "",
     },
     {

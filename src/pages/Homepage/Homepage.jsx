@@ -4,7 +4,6 @@ import moduleArr from "../../DataModule";
 import "./Homepage.css";
 
 const Homepage = () => {
-    console.log(moduleArr);
     return (
         <div id="homepage-content" className="row">
             {moduleArr.map((module) => (
