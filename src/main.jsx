@@ -22,6 +22,7 @@ import HelloMap from "./pages/HelloMap/HelloMap.jsx";
 import CurrencyConverter from "./pages/CurrencyConverter/CurrencyConverter.jsx";
 import Weather from "./pages/Weather/Weather.jsx";
 import Timezone from "./pages/Timezone/Timezone.jsx";
+import ApiTranslate from "./pages/ApiTranslate/ApiTranslate.jsx";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/timezone",
                 element: <Timezone />,
+            },
+            {
+                path: "/apps-lib/api-translate",
+                element: <ApiTranslate />,
             },
         ],
     },
