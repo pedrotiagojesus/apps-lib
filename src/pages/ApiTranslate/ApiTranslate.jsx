@@ -20,15 +20,15 @@ const ApiTranslate = () => {
     const [translatedText, setTranslatedText] = useState("");
 
     // Language select box options
-    const langOptions = [];
+    const [langOptions, setLangOptions] = useState([]);
 
     useEffect(() => {
-        languageList.map((lang) =>
-            langOptions.push({ value: lang.iso3, label: lang.name })
-        );
+        languageList.map((lang) => {
+            const opt = { value: lang.iso3, label: lang.name };
 
-        console.log(languageOriginalText);
-    });
+            setLangOptions((prevArray) => [...prevArray, opt]);
+        });
+    }, [languageList]);
 
     const handleClick = async () => {
         setLoading(true);
@@ -46,7 +46,7 @@ const ApiTranslate = () => {
         const data = JSON.stringify({
             text: originalText,
             to: languageTranlatedText,
-            from_lang: languageTranlatedText,
+            from_lang: languageOriginalText,
         });
 
         const response = await axios.post(url, data, config);
@@ -73,13 +73,16 @@ const ApiTranslate = () => {
                             >
                                 Text to translate
                             </label>
-                            <Select
-                                className=" mb-3"
-                                defaultValue={langOptions[0]}
-                                onChange={(e) => setLanguageOriginalText(e)}
-                                options={langOptions}
-                                required
-                            />
+                            {langOptions && langOptions.length > 0 && (
+                                <Select
+                                    className="select-theme mb-3"
+                                    onChange={(e) =>
+                                        setLanguageOriginalText(e.value)
+                                    }
+                                    options={langOptions}
+                                    defaultValue={langOptions[6]}
+                                />
+                            )}
                         </div>
                         <textarea
                             className="form-control"
@@ -87,7 +90,6 @@ const ApiTranslate = () => {
                             rows="8"
                             value={originalText}
                             onInput={(e) => setOriginalText(e.target.value)}
-                            required
                         ></textarea>
                     </div>
 
@@ -108,16 +110,16 @@ const ApiTranslate = () => {
                             >
                                 Text translated
                             </label>
-                            <Select
-                                className=" mb-3"
-                                aria-label="Select the translated language of the text"
-                                defaultValue={languageTranlatedText}
-                                onChange={(e) =>
-                                    setLanguageTranlatedText(e.value)
-                                }
-                                options={langOptions}
-                                required
-                            />
+                            {langOptions && langOptions.length > 0 && (
+                                <Select
+                                    className="select-theme mb-3"
+                                    onChange={(e) =>
+                                        setLanguageTranlatedText(e.value)
+                                    }
+                                    options={langOptions}
+                                    defaultValue={langOptions[0]}
+                                />
+                            )}
                         </div>
                         <textarea
                             className="form-control"

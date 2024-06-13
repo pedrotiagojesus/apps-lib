@@ -22,48 +22,50 @@ const TimezoneClock = ({ timezone }) => {
             });
             setTimeAnalog(new Date(timeAnalogString));
 
-            const timeString = date.toLocaleTimeString("en", options);
+            const timeString = date.toLocaleTimeString("pt", options);
             setTime(timeString);
 
             // console.log(timezone);
             // console.log(timeAnalogString);
-            console.log(timeString);
+            // console.log(timeString);
         }, 1000);
     }, [timezone]);
 
     return (
-        <div className="col-lg-4">
-            <div className="card">
+        <div className="col-lg-3">
+            <div className="card timezone-card">
                 <div className="card-header">{timezone}</div>
                 <div className="card-body">
-                    <div className="timezone-clock">
+                    <div className="timezone-clock ratio">
                         {timeAnalog && (
                             <div className="clock-wrapper">
                                 <div className="clock">
-                                    <div
-                                        className="hour_hand"
-                                        style={{
-                                            transform: `rotateZ(${
-                                                timeAnalog.getHours() * 30
-                                            }deg)`,
-                                        }}
-                                    />
-                                    <div
-                                        className="min_hand"
-                                        style={{
-                                            transform: `rotateZ(${
-                                                timeAnalog.getMinutes() * 6
-                                            }deg)`,
-                                        }}
-                                    />
-                                    <div
-                                        className="sec_hand"
-                                        style={{
-                                            transform: `rotateZ(${
-                                                timeAnalog.getSeconds() * 6
-                                            }deg)`,
-                                        }}
-                                    />
+                                    <div className="hand_wrapper">
+                                        <div
+                                            className="hour_hand"
+                                            style={{
+                                                transform: `rotateZ(${
+                                                    timeAnalog.getHours() * 30
+                                                }deg)`,
+                                            }}
+                                        />
+                                        <div
+                                            className="min_hand"
+                                            style={{
+                                                transform: `rotateZ(${
+                                                    timeAnalog.getMinutes() * 6
+                                                }deg)`,
+                                            }}
+                                        />
+                                        <div
+                                            className="sec_hand"
+                                            style={{
+                                                transform: `rotateZ(${
+                                                    timeAnalog.getSeconds() * 6
+                                                }deg)`,
+                                            }}
+                                        />
+                                    </div>
                                     <span className="twelve">12</span>
                                     <span className="one">1</span>
                                     <span className="two">2</span>

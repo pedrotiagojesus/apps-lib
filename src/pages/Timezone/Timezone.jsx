@@ -1,6 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Select from "react-select";
+
 import timezoneList from "./Data";
+
 import "./Timezone.css";
+
 import TimezoneClock from "../../components/Timezone/TimezoneClock";
 
 const Timezone = () => {
@@ -8,12 +12,26 @@ const Timezone = () => {
     const [timezoneSelected, setTimezoneSelected] = useState([localTimezone]);
 
     const addTimezone = (e) => {
-        const newTimezone = e.target.value;
+        const newTimezone = e.value;
 
         if (!timezoneSelected.includes(newTimezone)) {
             setTimezoneSelected([...timezoneSelected, newTimezone]);
         }
     };
+
+    // Timezone select box options
+    const [timezoneOptions, setTimezoneOptions] = useState([]);
+
+    useEffect(() => {
+        const opt = { value: "", label: "Selecione um fuso horário" };
+        setTimezoneOptions((prevArray) => [...prevArray, opt]);
+
+        timezoneList.map((timezone) => {
+            const opt = { value: timezone, label: timezone };
+
+            setTimezoneOptions((prevArray) => [...prevArray, opt]);
+        });
+    }, [timezoneList]);
 
     return (
         <div id="timezone">
@@ -22,20 +40,16 @@ const Timezone = () => {
                     <span>Timezone</span>
                 </div>
                 <div className="card-body">
-                    <select
-                        className="form-select"
-                        onChange={(e) => addTimezone(e)}
-                    >
-                        <option value="" disabled selected>
-                            Selecione um fuso horário
-                        </option>
-                        {timezoneList.map((timezone) => (
-                            <option key={timezone} value={timezone}>
-                                {timezone}
-                            </option>
-                        ))}
-                    </select>
-
+                    {timezoneOptions && timezoneOptions.length > 0 && (
+                        <Select
+                            className="select-theme mb-3 w-100"
+                            onChange={(e) => {
+                                addTimezone(e);
+                            }}
+                            options={timezoneOptions}
+                            defaultValue={timezoneOptions[0]}
+                        />
+                    )}
                     <div className="row timezone-row">
                         {timezoneSelected.map((timezone) => (
                             <TimezoneClock key={timezone} timezone={timezone} />

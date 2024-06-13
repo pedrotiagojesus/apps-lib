@@ -19,6 +19,10 @@ main > .content .card .card-header {
     align-items: center;
 }
 
+main .select-theme {
+    width: 150px;
+}
+
 /* SM */
 
 @media (min-width: 576px) {
