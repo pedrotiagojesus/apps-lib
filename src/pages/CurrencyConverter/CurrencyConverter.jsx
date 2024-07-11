@@ -1,18 +1,25 @@
 import { useEffect, useState } from "react";
-import "./CurrencyConverter.css";
+import Select from "react-select";
 import axios from "axios";
+import "./CurrencyConverter.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownLong } from "@fortawesome/free-solid-svg-icons";
 
 const CurrencyConverter = () => {
     const [currencyNameArr, setCurrencyNameArr] = useState(null);
+    const [currencyNameOption, setCurrencyNameOption] = useState([]);
+
     const [rates, setRates] = useState(null);
+
     const [fromCurrency, setFromCurrency] = useState("USD");
     const [toCurrency, setToCurrency] = useState("EUR");
     const [amount, setAmount] = useState(1);
     const [convertedAmount, setConvertedAmount] = useState(0);
 
+    /**
+     * Fetch data
+     */
     useEffect(() => {
         const fetchData = async () => {
             await axios
@@ -36,6 +43,22 @@ const CurrencyConverter = () => {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (currencyNameArr) {
+            Array(currencyNameArr).map((blockArr) => {
+                blockArr.map((row) => {
+                    const opt = {
+                        value: `${row[0]}`,
+                        label: `${row[0]} - ${row[1]}`,
+                    };
+                    setCurrencyNameOption((prevArray) => [...prevArray, opt]);
+                });
+            });
+        }
+
+        console.log(currencyNameOption);
+    }, [currencyNameArr]);
 
     useEffect(() => {
         if (rates) {
@@ -66,23 +89,15 @@ const CurrencyConverter = () => {
                             value={amount}
                             onInput={(e) => setAmount(e.target.value)}
                         />
-                        <select
-                            className="form-select mb-0"
-                            value={fromCurrency}
-                            onChange={(e) => setFromCurrency(e.target.value)}
-                        >
-                            {currencyNameArr &&
-                                currencyNameArr.map((currencyName) => (
-                                    <>
-                                        <option
-                                            key={`A - ${currencyName[0]}`}
-                                            value={currencyName[0]}
-                                        >
-                                            {`${currencyName[0]} - ${currencyName[1]}`}
-                                        </option>
-                                    </>
-                                ))}
-                        </select>
+                        {currencyNameOption &&
+                            currencyNameOption.length > 0 && (
+                                <Select
+                                    className="mb-0 w-25"
+                                    onChange={(e) => setFromCurrency(e.value)}
+                                    options={currencyNameOption}
+                                    defaultValue={currencyNameOption[42]}
+                                />
+                            )}
                     </div>
 
                     <div className="mb-3 text-center">
@@ -96,23 +111,15 @@ const CurrencyConverter = () => {
                             value={convertedAmount}
                             readOnly
                         />
-                        <select
-                            className="form-select mb-0"
-                            value={toCurrency}
-                            onChange={(e) => setToCurrency(e.target.value)}
-                        >
-                            {currencyNameArr &&
-                                currencyNameArr.map((currencyName) => (
-                                    <>
-                                        <option
-                                            key={`B - ${currencyName[0]}`}
-                                            value={currencyName[0]}
-                                        >
-                                            {`${currencyName[0]} - ${currencyName[1]}`}
-                                        </option>
-                                    </>
-                                ))}
-                        </select>
+                        {currencyNameOption &&
+                            currencyNameOption.length > 0 && (
+                                <Select
+                                    className="mb-0 w-25"
+                                    onChange={(e) => setToCurrency(e.value)}
+                                    options={currencyNameOption}
+                                    defaultValue={currencyNameOption[147]}
+                                />
+                            )}
                     </div>
                 </div>
             </div>
