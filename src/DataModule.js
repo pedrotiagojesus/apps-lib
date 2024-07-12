@@ -41,6 +41,11 @@ const moduleArr = [
             "Translator where the user indicates which text is and for which language he intends to translate.",
         route: "/apps-lib/api-translate",
     },
+    {
+        name: "Tic Tac Toe",
+        description: "Simple game of Tic Tac Toe.",
+        route: "/apps-lib/tic-tac-toe",
+    },
 ];
 
 export default moduleArr;

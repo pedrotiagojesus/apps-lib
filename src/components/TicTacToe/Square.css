@@ -1,0 +1,21 @@
+.square {
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    font-size: 3rem;
+    vertical-align: middle;
+    position: relative;
+}
+
+.square .display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square .display .fa-x {
+    color: var(--bs-red);
+}
+
+.square .display .fa-o {
+    color: var(--bs-blue);
+}

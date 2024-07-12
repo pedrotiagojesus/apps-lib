@@ -1,0 +1,32 @@
+#tic-tac-toe {
+    text-align: center;
+}
+
+#tic-tac-toe .board .row {
+    --bs-gutter-x: 0;
+    max-width: 30rem;
+    margin: 0 auto 1rem;
+}
+
+#tic-tac-toe .winner {
+    background-color: #ffcc00;
+}
+
+#tic-tac-toe .status {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+}
+
+#tic-tac-toe .status .icon {
+    margin-right: 0.5rem;
+}
+
+#tic-tac-toe .status .icon.fa-x {
+    color: var(--bs-red);
+}
+
+#tic-tac-toe .status .icon.fa-o {
+    color: var(--bs-blue);
+}
