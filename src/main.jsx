@@ -26,6 +26,7 @@ import ApiTranslate from "./pages/ApiTranslate/ApiTranslate.jsx";
 import NarcissisticNumber from "./pages/NarcissisticNumber/NarcissisticNumber.jsx";
 import TicTacToe from "./pages/TicTacToe/TicTacToe.jsx";
 import MemoryGame from "./pages/MemoryGame/MemoryGame.jsx";
+import ImcCalculator from "./pages/ImcCalculator/ImcCalculator.jsx";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/memory-game",
                 element: <MemoryGame />,
+            },
+            {
+                path: "/apps-lib/imc-calculator",
+                element: <ImcCalculator />,
             },
         ],
     },

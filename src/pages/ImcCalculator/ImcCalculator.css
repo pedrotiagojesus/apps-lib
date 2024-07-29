@@ -1,0 +1,40 @@
+#imc-number {
+    font-size: 2.4rem;
+    margin-bottom: 0.6rem;
+}
+
+#imc-info {
+    font-size: 1.4rem;
+    color: var(--bs-gray-dark);
+}
+
+#result-container h3 {
+    margin-bottom: 1rem;
+    color: var(--bs-gray-dark);
+}
+
+#result-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#imc-table {
+    margin: 1.5rem 0;
+    font-size: 0.8rem;
+}
+
+.good {
+    color: #12db34;
+}
+
+.low {
+    color: #dbce12;
+}
+
+.medium {
+    color: #db6212;
+}
+
+.hight {
+    color: #db1912;
+}
