@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
+
+// CSS
 import "./Navigator.css";
 
+// Data
 import moduleArr from "../../DataModule";
+
+// Utils
+import { slugify } from "../../utils/Text";
 
 const Navigator = () => {
     return (
@@ -15,7 +21,7 @@ const Navigator = () => {
                         <Link
                             key={module.name}
                             className="nav-link"
-                            to={module.route}
+                            to={`/apps-lib/${slugify(module.name)}`}
                         >
                             {module.name}
                         </Link>

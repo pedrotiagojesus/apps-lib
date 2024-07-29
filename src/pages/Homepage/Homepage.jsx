@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
+
+// CSS
+import "./Homepage.css";
+
+// Data
 import moduleArr from "../../DataModule";
 
-import "./Homepage.css";
+// Utils
+import { slugify } from "../../utils/Text";
 
 const Homepage = () => {
     return (
@@ -15,7 +21,10 @@ const Homepage = () => {
                         <div className="card-body">
                             <h5 className="card-title">{module.name}</h5>
                             <p className="card-text">{module.description}</p>
-                            <Link to={module.route} className="btn btn-primary">
+                            <Link
+                                to={`/apps-lib/${slugify(module.name)}`}
+                                className="btn btn-primary"
+                            >
                                 See more
                             </Link>
                         </div>
