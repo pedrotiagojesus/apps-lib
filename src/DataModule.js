@@ -46,6 +46,11 @@ const moduleArr = [
         description: "Simple game of Tic Tac Toe.",
         route: "/apps-lib/tic-tac-toe",
     },
+    {
+        name: "Memory Game",
+        description: "Simple game of memory.",
+        route: "/apps-lib/memory-game",
+    },
 ];
 
 export default moduleArr;

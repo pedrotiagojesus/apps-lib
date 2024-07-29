@@ -25,6 +25,7 @@ import Timezone from "./pages/Timezone/Timezone.jsx";
 import ApiTranslate from "./pages/ApiTranslate/ApiTranslate.jsx";
 import NarcissisticNumber from "./pages/NarcissisticNumber/NarcissisticNumber.jsx";
 import TicTacToe from "./pages/TicTacToe/TicTacToe.jsx";
+import MemoryGame from "./pages/MemoryGame/MemoryGame.jsx";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/tic-tac-toe",
                 element: <TicTacToe />,
+            },
+            {
+                path: "/apps-lib/memory-game",
+                element: <MemoryGame />,
             },
         ],
     },
