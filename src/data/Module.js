@@ -42,6 +42,11 @@ const moduleArr = [
         name: "Memory Game",
         description: "Simple game of memory.",
     },
+    {
+        name: "IMC Calculator",
+        description:
+            "Tool used to estimate a person's body fat based on their height and weight. It helps determine if an individual has a healthy body weight for their height.",
+    },
 ];
 
 export default moduleArr;

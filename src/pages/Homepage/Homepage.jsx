@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Homepage.css";
 
 // Data
-import moduleArr from "../../DataModule";
+import moduleArr from "../../data/Module";
 
 // Utils
 import { slugify } from "../../utils/Text";
