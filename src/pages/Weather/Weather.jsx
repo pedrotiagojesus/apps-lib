@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 
 // Components
 import Search from "../../components/Weather/Search";
 import CurrentWeather from "../../components/Weather/CurrentWeather";
 import Forecast from "../../components/Weather/Forecast";
+
+// Axios
+import openWeatherMapFetch from "../../axios/config";
 
 const Weather = () => {
     const [city, setCity] = useState("");
@@ -34,14 +36,16 @@ const Weather = () => {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
 
-            const responseWeather = await axios.get(
-                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=${apiKey}&units=metric`
+            const responseWeather = await openWeatherMapFetch.get(
+                `/weather?lat=${lat}&lon=${lon}&APPID=${apiKey}&units=metric`
             );
+
             setWeather(responseWeather.data);
 
-            const responseForecast = await axios.get(
-                `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=${apiKey}&units=metric`
+            const responseForecast = await openWeatherMapFetch.get(
+                `/forecast?lat=${lat}&lon=${lon}&APPID=${apiKey}&units=metric`
             );
+
             setForecast(responseForecast.data.list.slice(0, 5));
         });
     }, [apiKey]);
