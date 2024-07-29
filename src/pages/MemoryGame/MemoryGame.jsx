@@ -27,7 +27,7 @@ const generateCardArr = () => {
 };
 
 const MemoryGame = () => {
-    const playerAttempts = 100;
+    const playerAttempts = 10;
 
     const [cardArr, setCardArr] = useState(generateCardArr());
     const [attempt, setAttempt] = useState(playerAttempts);
