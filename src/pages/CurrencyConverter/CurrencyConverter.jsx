@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 import axios from "axios";
+
+// CSS
 import "./CurrencyConverter.css";
 
+// Components
+import Card from "../../components/Card";
+
+// Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownLong } from "@fortawesome/free-solid-svg-icons";
 
@@ -73,54 +79,51 @@ const CurrencyConverter = () => {
         return <h1>A carregar...</h1>;
     }
 
+    const body = (
+        <>
+            <div className="input-group mb-3">
+                <input
+                    className="form-control"
+                    type="number"
+                    value={amount}
+                    onInput={(e) => setAmount(e.target.value)}
+                />
+                {currencyNameOption && currencyNameOption.length > 0 && (
+                    <Select
+                        className="mb-0 w-25"
+                        onChange={(e) => setFromCurrency(e.value)}
+                        options={currencyNameOption}
+                        defaultValue={currencyNameOption[42]}
+                    />
+                )}
+            </div>
+
+            <div className="mb-3 text-center">
+                <FontAwesomeIcon icon={faDownLong} size="3x" />
+            </div>
+
+            <div className="input-group mb-3">
+                <input
+                    className="form-control"
+                    type="number"
+                    value={convertedAmount}
+                    readOnly
+                />
+                {currencyNameOption && currencyNameOption.length > 0 && (
+                    <Select
+                        className="mb-0 w-25"
+                        onChange={(e) => setToCurrency(e.value)}
+                        options={currencyNameOption}
+                        defaultValue={currencyNameOption[147]}
+                    />
+                )}
+            </div>
+        </>
+    );
+
     return (
         <div id="currency-converter">
-            <div className="card">
-                <div className="card-header">
-                    <span>Currency converter</span>
-                </div>
-                <div className="card-body">
-                    <div className="input-group mb-3">
-                        <input
-                            className="form-control"
-                            type="number"
-                            value={amount}
-                            onInput={(e) => setAmount(e.target.value)}
-                        />
-                        {currencyNameOption &&
-                            currencyNameOption.length > 0 && (
-                                <Select
-                                    className="mb-0 w-25"
-                                    onChange={(e) => setFromCurrency(e.value)}
-                                    options={currencyNameOption}
-                                    defaultValue={currencyNameOption[42]}
-                                />
-                            )}
-                    </div>
-
-                    <div className="mb-3 text-center">
-                        <FontAwesomeIcon icon={faDownLong} size="3x" />
-                    </div>
-
-                    <div className="input-group mb-3">
-                        <input
-                            className="form-control"
-                            type="number"
-                            value={convertedAmount}
-                            readOnly
-                        />
-                        {currencyNameOption &&
-                            currencyNameOption.length > 0 && (
-                                <Select
-                                    className="mb-0 w-25"
-                                    onChange={(e) => setToCurrency(e.value)}
-                                    options={currencyNameOption}
-                                    defaultValue={currencyNameOption[147]}
-                                />
-                            )}
-                    </div>
-                </div>
-            </div>
+            <Card title="Currency converter" body={body} />
         </div>
     );
 };

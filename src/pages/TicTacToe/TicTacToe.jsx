@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import "./TicTacToe.css";
 
 // Components
+import Card from "../../components/Card";
 import Square from "../../components/TicTacToe/Square";
+
+// Hooks
 import { Ai } from "../../hooks/TicTacToe/Ai";
 
 const TicTacToe = () => {
@@ -85,48 +88,41 @@ const TicTacToe = () => {
         }
     }, [yourTurn]);
 
+    const body = (
+        <div className="board ">
+            <div className="status">
+                {winner ? (
+                    <p className="winner">
+                        The winner is:{" "}
+                        <i className={`fa-solid ${winner} icon`}></i>
+                    </p>
+                ) : (
+                    <>
+                        <i className={`fa-solid ${symbolInUse} icon`}></i>
+                        TURN
+                    </>
+                )}
+            </div>
+            <div className="row">
+                {squares.map((value, index) => (
+                    <div className="col-4" key={index}>
+                        <Square
+                            value={squares[index]}
+                            handleClick={() => handleClick(index)}
+                        />
+                    </div>
+                ))}
+            </div>
+
+            <button className="btn btn-primary" onClick={resetGame}>
+                Reset
+            </button>
+        </div>
+    );
+
     return (
         <div id="tic-tac-toe">
-            <div className="card">
-                <div className="card-header">
-                    <span>Tic Tac Toe</span>
-                </div>
-                <div className="card-body">
-                    <div className="board ">
-                        <div className="status">
-                            {winner ? (
-                                <p className="winner">
-                                    The winner is:{" "}
-                                    <i
-                                        className={`fa-solid ${winner} icon`}
-                                    ></i>
-                                </p>
-                            ) : (
-                                <>
-                                    <i
-                                        className={`fa-solid ${symbolInUse} icon`}
-                                    ></i>
-                                    TURN
-                                </>
-                            )}
-                        </div>
-                        <div className="row">
-                            {squares.map((value, index) => (
-                                <div className="col-4" key={index}>
-                                    <Square
-                                        value={squares[index]}
-                                        handleClick={() => handleClick(index)}
-                                    />
-                                </div>
-                            ))}
-                        </div>
-
-                        <button className="btn btn-primary" onClick={resetGame}>
-                            Reset
-                        </button>
-                    </div>
-                </div>
-            </div>
+            <Card title="Tic Tac Toe" body={body} />
         </div>
     );
 };

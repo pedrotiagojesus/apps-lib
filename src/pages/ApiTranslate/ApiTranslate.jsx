@@ -5,6 +5,7 @@ import Select from "react-select";
 import "./ApiTranslate.css";
 
 // Components
+import Card from "../../components/Card";
 import Loading from "../../components/Loading/Loading";
 
 // Data
@@ -51,81 +52,72 @@ const ApiTranslate = () => {
         setLoading(false);
     };
 
+    const body = (
+        <>
+            {loading && <Loading />}
+            <div className="mb-3">
+                <div className="d-flex justify-content-between align-items-center">
+                    <label htmlFor="original-text" className="form-label mb-0">
+                        Text to translate
+                    </label>
+                    {langOptions && langOptions.length > 0 && (
+                        <Select
+                            className="select-theme mb-3"
+                            onChange={(e) => setLanguageOriginalText(e.value)}
+                            options={langOptions}
+                            defaultValue={langOptions[6]}
+                        />
+                    )}
+                </div>
+                <textarea
+                    className="form-control"
+                    id="original-text"
+                    rows="8"
+                    value={originalText}
+                    onInput={(e) => setOriginalText(e.target.value)}
+                ></textarea>
+            </div>
+
+            <div className="d-flex justify-content-center">
+                <button
+                    className="btn btn-primary"
+                    onClick={() => handleClick()}
+                >
+                    Translate
+                </button>
+            </div>
+
+            <div className="mb-3">
+                <div className="d-flex justify-content-between align-items-center">
+                    <label
+                        htmlFor="translated-text"
+                        className="form-label mb-0"
+                    >
+                        Text translated
+                    </label>
+                    {langOptions && langOptions.length > 0 && (
+                        <Select
+                            className="select-theme mb-3"
+                            onChange={(e) => setLanguageTranlatedText(e.value)}
+                            options={langOptions}
+                            defaultValue={langOptions[0]}
+                        />
+                    )}
+                </div>
+                <textarea
+                    className="form-control"
+                    id="text-to-translate"
+                    rows="8"
+                    value={translatedText}
+                    readOnly
+                ></textarea>
+            </div>
+        </>
+    );
+
     return (
         <div id="api-translate">
-            <div className="card">
-                <div className="card-header">
-                    <span>API translate</span>
-                </div>
-
-                <div className="card-body">
-                    {loading && <Loading />}
-                    <div className="mb-3">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <label
-                                htmlFor="original-text"
-                                className="form-label mb-0"
-                            >
-                                Text to translate
-                            </label>
-                            {langOptions && langOptions.length > 0 && (
-                                <Select
-                                    className="select-theme mb-3"
-                                    onChange={(e) =>
-                                        setLanguageOriginalText(e.value)
-                                    }
-                                    options={langOptions}
-                                    defaultValue={langOptions[6]}
-                                />
-                            )}
-                        </div>
-                        <textarea
-                            className="form-control"
-                            id="original-text"
-                            rows="8"
-                            value={originalText}
-                            onInput={(e) => setOriginalText(e.target.value)}
-                        ></textarea>
-                    </div>
-
-                    <div className="d-flex justify-content-center">
-                        <button
-                            className="btn btn-primary"
-                            onClick={() => handleClick()}
-                        >
-                            Translate
-                        </button>
-                    </div>
-
-                    <div className="mb-3">
-                        <div className="d-flex justify-content-between align-items-center">
-                            <label
-                                htmlFor="translated-text"
-                                className="form-label mb-0"
-                            >
-                                Text translated
-                            </label>
-                            {langOptions && langOptions.length > 0 && (
-                                <Select
-                                    className="select-theme mb-3"
-                                    onChange={(e) =>
-                                        setLanguageTranlatedText(e.value)
-                                    }
-                                    options={langOptions}
-                                    defaultValue={langOptions[0]}
-                                />
-                            )}
-                        </div>
-                        <textarea
-                            className="form-control"
-                            id="text-to-translate"
-                            rows="8"
-                            value={translatedText}
-                            readOnly
-                        ></textarea>
-                    </div>
-                </div>
-            </div>
+            <Card title="API translate" body={body} />
         </div>
     );
 };

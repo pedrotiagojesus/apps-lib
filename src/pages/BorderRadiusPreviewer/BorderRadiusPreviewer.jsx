@@ -1,5 +1,10 @@
 import { useState, useRef, useEffect } from "react";
+
+// CSS
 import "./BorderRadiusPreviewer.css";
+
+// Components
+import Card from "../../components/Card";
 
 const BorderRadiusPreviewer = () => {
     const [borderTopLeft, setBorderTopLeft] = useState(0);
@@ -32,75 +37,68 @@ const BorderRadiusPreviewer = () => {
         previewRef.current.style.borderRadius = radius;
     }, [borderTopLeft, borderBottomLeft, borderTopRight, borderBottomRight]);
 
-    return (
-        <div id="border-radius">
-            <div className="card">
-                <div className="card-header">
-                    <span>Border-radius Previewer</span>
+    const body = (
+        <>
+            <div className="border-radius-wrapper">
+                <div className="d-flex flex-column justify-content-between">
+                    <input
+                        type="text"
+                        id="border-radius-top-left"
+                        className="form-control"
+                        value={borderTopLeft}
+                        maxLength="3"
+                        onInput={(e) =>
+                            setBorderTopLeft(parseFloat(e.target.value))
+                        }
+                    />
+                    <input
+                        type="text"
+                        id="border-radius-bottom-left"
+                        className="form-control"
+                        value={borderBottomLeft}
+                        maxLength="3"
+                        onInput={(e) =>
+                            setBorderBottomLeft(parseFloat(e.target.value))
+                        }
+                    />
                 </div>
-                <div className="card-body">
-                    <div className="border-radius-wrapper">
-                        <div className="d-flex flex-column justify-content-between">
-                            <input
-                                type="text"
-                                id="border-radius-top-left"
-                                className="form-control"
-                                value={borderTopLeft}
-                                maxLength="3"
-                                onInput={(e) =>
-                                    setBorderTopLeft(parseFloat(e.target.value))
-                                }
-                            />
-                            <input
-                                type="text"
-                                id="border-radius-bottom-left"
-                                className="form-control"
-                                value={borderBottomLeft}
-                                maxLength="3"
-                                onInput={(e) =>
-                                    setBorderBottomLeft(
-                                        parseFloat(e.target.value)
-                                    )
-                                }
-                            />
-                        </div>
-                        <div
-                            id="preview"
-                            className="form-control"
-                            ref={previewRef}
-                        ></div>
-                        <div className="d-flex flex-column justify-content-between">
-                            <input
-                                type="text"
-                                id="border-radius-top-right"
-                                className="form-control"
-                                value={borderTopRight}
-                                maxLength="3"
-                                onInput={(e) =>
-                                    setBorderTopRight(
-                                        parseFloat(e.target.value)
-                                    )
-                                }
-                            />
-                            <input
-                                type="text"
-                                id="border-radius-bottom-right"
-                                className="form-control"
-                                value={borderBottomRight}
-                                maxLength="3"
-                                onInput={(e) =>
-                                    setBorderBottomRight(
-                                        parseFloat(e.target.value)
-                                    )
-                                }
-                            />
-                        </div>
-                    </div>
-                    <div id="display-code">
-                        <pre>border-radius: {borderRadius}</pre>
-                    </div>
+                <div
+                    id="preview"
+                    className="form-control"
+                    ref={previewRef}
+                ></div>
+                <div className="d-flex flex-column justify-content-between">
+                    <input
+                        type="text"
+                        id="border-radius-top-right"
+                        className="form-control"
+                        value={borderTopRight}
+                        maxLength="3"
+                        onInput={(e) =>
+                            setBorderTopRight(parseFloat(e.target.value))
+                        }
+                    />
+                    <input
+                        type="text"
+                        id="border-radius-bottom-right"
+                        className="form-control"
+                        value={borderBottomRight}
+                        maxLength="3"
+                        onInput={(e) =>
+                            setBorderBottomRight(parseFloat(e.target.value))
+                        }
+                    />
                 </div>
             </div>
+            <div id="display-code">
+                <pre>border-radius: {borderRadius}</pre>
+            </div>
+        </>
+    );
+
+    return (
+        <div id="border-radius">
+            <Card title="Border-radius Previewer" body={body} />
         </div>
     );
 };

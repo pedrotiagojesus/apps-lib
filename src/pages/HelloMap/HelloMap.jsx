@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
+
+// CSS
 import "./HelloMap.css";
+
+// Data
 import countryList from "./Data";
+
+// Components
+import Card from "../../components/Card";
 
 const HelloMap = () => {
     const [map, setMap] = useState(null);
@@ -61,17 +68,11 @@ const HelloMap = () => {
         getHello();
     }, [map]);
 
+    const body = <div id="map"></div>;
+
     return (
         <div id="hello-app">
-            <div className="card">
-                <div className="card-header">
-                    <span>Hello APP</span>
-                </div>
-
-                <div className="card-body">
-                    <div id="map"></div>
-                </div>
-            </div>
+            <Card title="Hello APP" body={body} />
         </div>
     );
 };

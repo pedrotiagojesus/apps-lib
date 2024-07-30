@@ -1,9 +1,11 @@
+import { useState } from "react";
+
 // CSS
 import "./MemoryGame.css";
 
 // Components
 import Board from "../../components/MemoryGame/Board";
-import { useState } from "react";
+import Card from "../../components/Card";
 
 const shuffleArray = (array) => {
     for (let index = array.length - 1; index > 0; index--) {
@@ -81,30 +83,26 @@ const MemoryGame = () => {
         }
     };
 
+    const body = (
+        <>
+            <Board cardArr={cardArr} onCardClick={handleCardClick} />
+
+            {result === cardArr.length ? (
+                <h2>Congrats, you win!</h2>
+            ) : attempt === 0 ? (
+                <p>Game over!</p>
+            ) : (
+                <p className="mb-0">You have {attempt} attempt(s)</p>
+            )}
+            <button className="btn btn-primary" onClick={() => resetGame()}>
+                Reset game
+            </button>
+        </>
+    );
+
     return (
         <div id="memory-game">
-            <div className="card">
-                <div className="card-header">
-                    <span>Memory Game</span>
-                </div>
-                <div className="card-body">
-                    <Board cardArr={cardArr} onCardClick={handleCardClick} />
-
-                    {result === cardArr.length ? (
-                        <h2>Congrats, you win!</h2>
-                    ) : attempt === 0 ? (
-                        <p>Game over!</p>
-                    ) : (
-                        <p className="mb-0">You have {attempt} attempt(s)</p>
-                    )}
-                    <button
-                        className="btn btn-primary"
-                        onClick={() => resetGame()}
-                    >
-                        Reset game
-                    </button>
-                </div>
-            </div>
+            <Card title="Memory Game" body={body} />
         </div>
     );
 };

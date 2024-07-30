@@ -9,6 +9,7 @@ import imcData from "../../data/ImcCalculator.js";
 // Components
 import Calculator from "../../components/ImcCalculator/Calculator";
 import Table from "../../components/ImcCalculator/Table";
+import Card from "../../components/Card";
 
 const ImcCalculator = () => {
     const [imc, setImc] = useState("");
@@ -47,26 +48,25 @@ const ImcCalculator = () => {
         setInfoClass("");
     };
 
+    const body = (
+        <>
+            {imc ? (
+                <Table
+                    data={imcData}
+                    imc={imc}
+                    info={info}
+                    infoClass={infoClass}
+                    resetCalc={resetCalc}
+                />
+            ) : (
+                <Calculator calculateImc={calculateImc} />
+            )}
+        </>
+    );
+
     return (
         <div id="imc-calculator">
-            <div className="card">
-                <div className="card-header">
-                    <span>IMC Calculator</span>
-                </div>
-                <div className="card-body">
-                    {imc ? (
-                        <Table
-                            data={imcData}
-                            imc={imc}
-                            info={info}
-                            infoClass={infoClass}
-                            resetCalc={resetCalc}
-                        />
-                    ) : (
-                        <Calculator calculateImc={calculateImc} />
-                    )}
-                </div>
-            </div>
+            <Card title="IMC Calculator" body={body} />
         </div>
     );
 };
