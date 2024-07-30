@@ -6,7 +6,7 @@ import CurrentWeather from "../../components/Weather/CurrentWeather";
 import Forecast from "../../components/Weather/Forecast";
 
 // Axios
-import openWeatherMapFetch from "../../axios/config";
+import { openWeatherMapFetch } from "../../axios/config";
 
 const Weather = () => {
     const [city, setCity] = useState("");

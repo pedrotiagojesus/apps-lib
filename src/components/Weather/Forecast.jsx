@@ -5,8 +5,6 @@ const Forecast = ({ forecastList }) => {
     const dataArr = [];
 
     forecastList.forEach((forecast) => {
-        console.log(forecast);
-
         const date = new Date(forecast.dt * 1000);
         const hours = date.getUTCHours();
 

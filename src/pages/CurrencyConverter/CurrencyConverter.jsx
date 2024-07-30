@@ -56,8 +56,6 @@ const CurrencyConverter = () => {
                 });
             });
         }
-
-        console.log(currencyNameOption);
     }, [currencyNameArr]);
 
     useEffect(() => {

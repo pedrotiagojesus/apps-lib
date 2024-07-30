@@ -24,10 +24,6 @@ const TimezoneClock = ({ timezone }) => {
 
             const timeString = date.toLocaleTimeString("pt", options);
             setTime(timeString);
-
-            // console.log(timezone);
-            // console.log(timeAnalogString);
-            // console.log(timeString);
         }, 1000);
     }, [timezone]);
 

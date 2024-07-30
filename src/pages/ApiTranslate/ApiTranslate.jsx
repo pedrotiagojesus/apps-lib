@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import Select from "react-select";
 
 // CSS
@@ -8,16 +7,14 @@ import "./ApiTranslate.css";
 // Components
 import Loading from "../../components/Loading/Loading";
 
-import languageList from "./Data";
+// Data
+import languageList from "../../data/Language.js";
+
+// Axios
+import { translateFetch } from "../../axios/config";
 
 const ApiTranslate = () => {
     const [loading, setLoading] = useState(false);
-
-    const [languageOriginalText, setLanguageOriginalText] = useState("");
-    const [languageTranlatedText, setLanguageTranlatedText] = useState("");
-
-    const [originalText, setOriginalText] = useState("Olá");
-    const [translatedText, setTranslatedText] = useState("");
 
     // Language select box options
     const [langOptions, setLangOptions] = useState([]);
@@ -25,23 +22,20 @@ const ApiTranslate = () => {
     useEffect(() => {
         languageList.map((lang) => {
             const opt = { value: lang.iso3, label: lang.name };
-
             setLangOptions((prevArray) => [...prevArray, opt]);
         });
+
+        setLanguageOriginalText(languageList[6].iso2);
+        setLanguageTranlatedText(languageList[0].iso2);
     }, [languageList]);
+
+    const [languageOriginalText, setLanguageOriginalText] = useState("");
+    const [languageTranlatedText, setLanguageTranlatedText] = useState("");
+    const [originalText, setOriginalText] = useState("Olá");
+    const [translatedText, setTranslatedText] = useState("");
 
     const handleClick = async () => {
         setLoading(true);
-        const url = "https://google-api31.p.rapidapi.com/gtranslate";
-
-        const config = {
-            headers: {
-                "x-rapidapi-key":
-                    "52f60a1141msh61637c05d4a2c44p173419jsnaef9250f4179",
-                "x-rapidapi-host": "google-api31.p.rapidapi.com",
-                "Content-Type": "application/json",
-            },
-        };
 
         const data = JSON.stringify({
             text: originalText,
@@ -49,7 +43,8 @@ const ApiTranslate = () => {
             from_lang: languageOriginalText,
         });
 
-        const response = await axios.post(url, data, config);
+        const response = await translateFetch.post("", data);
+
         const dataResponse = response.data;
 
         setTranslatedText(dataResponse.translated_text);

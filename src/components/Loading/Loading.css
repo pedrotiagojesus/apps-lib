@@ -7,5 +7,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #cecece30;
+    background-color: #cecece90;
+    z-index: 1;
 }
