@@ -1,0 +1,21 @@
+#rock-papper-scissor .display {
+    display: flex;
+    text-align: center;
+}
+#rock-papper-scissor .display > * {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#rock-papper-scissor .display .name {
+    font-size: 2rem;
+    font-weight: bold;
+}
+#rock-papper-scissor .display .icon {
+    font-size: 1.75rem;
+    color: var(--bs-primary);
+}
+#rock-papper-scissor .display .score {
+    font-size: 2rem;
+}

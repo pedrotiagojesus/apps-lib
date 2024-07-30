@@ -47,6 +47,10 @@ const moduleArr = [
         description:
             "Tool used to estimate a person's body fat based on their height and weight. It helps determine if an individual has a healthy body weight for their height.",
     },
+    {
+        name: "Rock Paper Scissor",
+        description: "",
+    },
 ];
 
 export default moduleArr;

@@ -27,6 +27,7 @@ import NarcissisticNumber from "./pages/NarcissisticNumber/NarcissisticNumber.js
 import TicTacToe from "./pages/TicTacToe/TicTacToe.jsx";
 import MemoryGame from "./pages/MemoryGame/MemoryGame.jsx";
 import ImcCalculator from "./pages/ImcCalculator/ImcCalculator.jsx";
+import RockPaperScissor from "./pages/RockPaperScissor/RockPaperScissor.jsx";
 
 const router = createBrowserRouter([
     {
@@ -76,6 +77,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/imc-calculator",
                 element: <ImcCalculator />,
+            },
+            {
+                path: "/apps-lib/rock-paper-scissor",
+                element: <RockPaperScissor />,
             },
         ],
     },
