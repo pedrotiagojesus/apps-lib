@@ -10,7 +10,7 @@ const Search = ({ city, setCity, searchWeather }) => {
                 onInput={(e) => setCity(e.target.value)}
             />
             <button className="btn btn-primary" onClick={searchWeather}>
-                Buscar
+                Search
             </button>
         </div>
     );

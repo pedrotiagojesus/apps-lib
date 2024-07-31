@@ -17,13 +17,13 @@ const Weather = () => {
 
     const searchWeather = async () => {
         try {
-            const responseWeather = await axios.get(
-                `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=metric`
+            const responseWeather = await openWeatherMapFetch.get(
+                `/weather?q=${city}&APPID=${apiKey}&units=metric`
             );
             setWeather(responseWeather.data);
 
-            const responseForecast = await axios.get(
-                `https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=${apiKey}&units=metric`
+            const responseForecast = await openWeatherMapFetch.get(
+                `/forecast?q=${city}&APPID=${apiKey}&units=metric`
             );
             setForecast(responseForecast.data.list.slice(0, 5));
         } catch (error) {
