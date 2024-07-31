@@ -1,0 +1,7 @@
+#currency-converter .form-select {
+    background-color: transparent;
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    padding-left: 0;
+}

@@ -32,6 +32,11 @@ main .select-theme {
     font-size: 0.9rem;
 }
 
+.form-select:focus {
+    outline: 0;
+    box-shadow: none;
+}
+
 /* SM */
 
 @media (min-width: 576px) {

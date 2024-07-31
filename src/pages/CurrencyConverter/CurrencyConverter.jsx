@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
-import axios from "axios";
 
 // CSS
 import "./CurrencyConverter.css";
 
 // Components
 import Card from "../../components/Card";
+import Loading from "../../components/Loading/Loading";
 
-// Icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownLong } from "@fortawesome/free-solid-svg-icons";
+// Axios
+import currencyConverterFetch from "../../axios/currencyConverter";
 
 const CurrencyConverter = () => {
     const [currencyNameArr, setCurrencyNameArr] = useState(null);
@@ -23,28 +22,23 @@ const CurrencyConverter = () => {
     const [amount, setAmount] = useState(1);
     const [convertedAmount, setConvertedAmount] = useState(0);
 
+    const currencyApiKey =
+        import.meta.env.VITE_CURRENCY_CONVERTER_API_KEY || "";
+
     /**
      * Fetch data
      */
     useEffect(() => {
         const fetchData = async () => {
-            await axios
-                .get(
-                    "https://v6.exchangerate-api.com/v6/654486f72ea8292f55c2de95/latest/USD"
-                )
-                .then((response) => {
-                    setRates(response.data.conversion_rates);
-                })
-                .catch((error) => console.log(error));
+            const responseUsdValue = await currencyConverterFetch.get(
+                `/${currencyApiKey}/latest/USD`
+            );
+            setRates(responseUsdValue.data.conversion_rates);
 
-            await axios
-                .get(
-                    "https://v6.exchangerate-api.com/v6/654486f72ea8292f55c2de95/codes"
-                )
-                .then((response) => {
-                    setCurrencyNameArr(response.data.supported_codes);
-                })
-                .catch((error) => console.log(error));
+            const responseCodes = await currencyConverterFetch.get(
+                `/${currencyApiKey}/codes`
+            );
+            setCurrencyNameArr(responseCodes.data.supported_codes);
         };
 
         fetchData();
@@ -75,48 +69,78 @@ const CurrencyConverter = () => {
         }
     }, [rates, fromCurrency, toCurrency, amount]);
 
-    if (!rates) {
-        return <h1>A carregar...</h1>;
-    }
-
     const body = (
         <>
-            <div className="input-group mb-3">
-                <input
-                    className="form-control"
-                    type="number"
-                    value={amount}
-                    onInput={(e) => setAmount(e.target.value)}
-                />
-                {currencyNameOption && currencyNameOption.length > 0 && (
-                    <Select
-                        className="mb-0 w-25"
-                        onChange={(e) => setFromCurrency(e.value)}
-                        options={currencyNameOption}
-                        defaultValue={currencyNameOption[42]}
-                    />
-                )}
+            {!rates && <Loading />}
+
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="mb-3">
+                        {currencyNameOption &&
+                            currencyNameOption.length > 0 && (
+                                <select
+                                    className="form-select w-auto"
+                                    onChange={(e) =>
+                                        setFromCurrency(e.target.value)
+                                    }
+                                    value={fromCurrency}
+                                >
+                                    {currencyNameOption.map((currency) => (
+                                        <option
+                                            key={`from-${currency.value}`}
+                                            value={currency.value}
+                                        >
+                                            {currency.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
+                        <input
+                            className="form-control"
+                            type="number"
+                            value={amount}
+                            onInput={(e) => setAmount(e.target.value)}
+                        />
+                    </div>
+                </div>
             </div>
 
-            <div className="mb-3 text-center">
-                <FontAwesomeIcon icon={faDownLong} size="3x" />
+            <div className="row">
+                <div className="col-md-6 text-center">
+                    <i className="fa-solid fa-down-long fa-3x mb-3"></i>
+                </div>
             </div>
 
-            <div className="input-group mb-3">
-                <input
-                    className="form-control"
-                    type="number"
-                    value={convertedAmount}
-                    readOnly
-                />
-                {currencyNameOption && currencyNameOption.length > 0 && (
-                    <Select
-                        className="mb-0 w-25"
-                        onChange={(e) => setToCurrency(e.value)}
-                        options={currencyNameOption}
-                        defaultValue={currencyNameOption[147]}
-                    />
-                )}
+            <div className="row">
+                <div className="col-md-6">
+                    <div className="mb-3">
+                        {currencyNameOption &&
+                            currencyNameOption.length > 0 && (
+                                <select
+                                    className="form-select w-auto"
+                                    onChange={(e) =>
+                                        setToCurrency(e.target.value)
+                                    }
+                                    value={toCurrency}
+                                >
+                                    {currencyNameOption.map((currency) => (
+                                        <option
+                                            key={`to-${currency.value}`}
+                                            value={currency.value}
+                                        >
+                                            {currency.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            )}
+                        <input
+                            className="form-control"
+                            type="number"
+                            value={convertedAmount}
+                            readOnly
+                        />
+                    </div>
+                </div>
             </div>
         </>
     );
