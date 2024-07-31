@@ -40,7 +40,7 @@ const HelloMap = () => {
                         .addTo(map);
 
                     resolve();
-                }, 2000);
+                }, 1000);
             });
         };
 
