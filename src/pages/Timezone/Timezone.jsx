@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 
-import timezoneList from "./Data";
-
+// CSS
 import "./Timezone.css";
 
+// Data
+import timezoneList from "../../data/Timezone";
+
+// Components
 import TimezoneClock from "../../components/Timezone/TimezoneClock";
 
 const Timezone = () => {
