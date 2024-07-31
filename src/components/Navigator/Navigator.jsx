@@ -9,7 +9,12 @@ import moduleArr from "../../data/Module";
 // Utils
 import { slugify } from "../../utils/Text";
 
+// Hooks
+import { useCurrentURL } from "../../hooks/useCurrentUrl";
+
 const Navigator = () => {
+    const currentUrl = useCurrentURL();
+
     return (
         <>
             <nav id="menu-vertical" className="navbar navbar-expand-lg">
@@ -20,7 +25,12 @@ const Navigator = () => {
                     {moduleArr.map((module) => (
                         <Link
                             key={module.name}
-                            className="nav-link"
+                            className={`nav-link ${
+                                `/apps-lib/${slugify(module.name)}` ===
+                                currentUrl.pathname
+                                    ? "active"
+                                    : ""
+                            }`}
                             to={`/apps-lib/${slugify(module.name)}`}
                         >
                             {module.name}
