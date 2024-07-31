@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import "./HelloMap.css";
 
 // Data
-import countryList from "./Data";
+import countryList from "../../data/CountryIso2.js";
+
+// Axio
+import { helloFetch } from "../../axios/config";
 
 // Components
 import Card from "../../components/Card";
@@ -45,11 +48,9 @@ const HelloMap = () => {
             for (const countryIndex in countryList) {
                 let country = countryList[countryIndex];
 
-                const response = await fetch(
-                    "https://hellosalut.stefanbohacek.dev/?cc=" + country.iso2
-                );
-                const json = await response.json();
-                await setMarker(country, json.hello);
+                const response = await helloFetch.get(`?cc=${country.iso2}`);
+                const data = response.data;
+                await setMarker(country, data.hello);
             }
         };
 
