@@ -1,3 +1,4 @@
 #homepage-content {
-    --bs-gutter-y: 1.5rem;
+    --bs-gutter-x: 2rem;
+    --bs-gutter-y: 2rem;
 }

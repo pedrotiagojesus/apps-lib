@@ -13,6 +13,7 @@ import "leaflet/dist/leaflet.js";
 // CSS
 import "./index.css";
 import "./root.css";
+import "./theme/btn.css";
 
 // Pages
 import App from "./App.jsx";

@@ -23,6 +23,15 @@ main .select-theme {
     width: 150px;
 }
 
+/* Card */
+.card {
+    --bs-border-radius: 0;
+}
+
+.card .card-text {
+    font-size: 0.9rem;
+}
+
 /* SM */
 
 @media (min-width: 576px) {
