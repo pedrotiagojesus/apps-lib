@@ -51,6 +51,14 @@ const MemoryGame = () => {
             return;
         }
 
+        if (flippedCardArr.length === 1) {
+            let [flippedCard] = flippedCardArr;
+            if (flippedCard.id === cardClicked.id) {
+                console.log("Ok");
+                return;
+            }
+        }
+
         const newCard = cardArr.map((card) => {
             if (card.id === cardClicked.id) {
                 return { ...card, isFlipped: true };
