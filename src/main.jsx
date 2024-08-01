@@ -29,6 +29,7 @@ import TicTacToe from "./pages/TicTacToe/TicTacToe.jsx";
 import MemoryGame from "./pages/MemoryGame/MemoryGame.jsx";
 import ImcCalculator from "./pages/ImcCalculator/ImcCalculator.jsx";
 import RockPaperScissor from "./pages/RockPaperScissor/RockPaperScissor.jsx";
+import Quiz from "./pages/Quiz/Quiz.jsx";
 
 const router = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/rock-paper-scissor",
                 element: <RockPaperScissor />,
+            },
+            {
+                path: "/apps-lib/quiz",
+                element: <Quiz />,
             },
         ],
     },

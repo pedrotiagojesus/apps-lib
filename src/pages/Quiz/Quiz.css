@@ -1,0 +1,43 @@
+#header {
+    display: flex;
+    justify-content: end;
+    justify-items: center;
+    margin-bottom: 1rem;
+    background-color: #cccccc35;
+    margin-top: -1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+#header .timer {
+    font-weight: bold;
+}
+
+#header .timer span {
+    font-weight: normal;
+}
+
+#game .option-select {
+    display: flex;
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+    margin-top: 1.5rem;
+}
+
+#game .option-select {
+    display: flex;
+    --bs-gutter-x: 1rem;
+    --bs-gutter-y: 1rem;
+    margin-top: 1.5rem;
+}
+
+#game .option-select button {
+    width: 100%;
+    text-align: left;
+    --bs-btn-padding-y: 1rem;
+}

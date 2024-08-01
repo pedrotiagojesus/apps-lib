@@ -51,6 +51,10 @@ const moduleArr = [
         name: "Rock Paper Scissor",
         description: "",
     },
+    {
+        name: "Quiz",
+        description: "",
+    },
 ];
 
 export default moduleArr;
