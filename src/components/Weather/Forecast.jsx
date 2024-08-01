@@ -10,7 +10,7 @@ const Forecast = ({ forecastList }) => {
 
         dataArr.push({
             temp: `${forecast.main.temp} ºC`,
-            image: `http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png`,
+            image: `src/assets/Weather/${forecast.weather[0].icon}.png`,
             description: forecast.weather[0].description,
             hour: hours,
         });
