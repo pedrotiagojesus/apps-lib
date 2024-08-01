@@ -1,18 +1,25 @@
 #current-weather {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-#current-weather h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+#current-weather .temperature {
+    margin-bottom: 0;
+    font-size: 2rem;
 }
 
-#current-weather img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
+#current-weather .temperature .span {
+    font-size: 1.25rem;
 }
 
-#current-weather p {
-    margin-bottom: 5px;
+#current-weather .description {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+#current-weather .name {
+    font-size: 1rem;
+    margin-bottom: 0;
 }

@@ -1,15 +1,21 @@
 import "./CurrentWeather.css";
 
 const CurrentWeather = ({ weather }) => {
+    const data = {
+        temp: `${weather.main.temp} `,
+        image: `src/assets/Weather/${weather.weather[0].icon}.png`,
+        description: weather.weather[0].description,
+        name: weather.name,
+    };
+
     return (
         <div id="current-weather">
-            <h3>{weather.name}</h3>
-            <img
-                src={`src/assets/Weather/${weather.weather[0].icon}.png`}
-                alt={weather.weather[0].description}
-            />
-            <p>{weather.main.temp} ºC</p>
-            <p>{weather.weather[0].description}</p>
+            <img src={data.image} alt={data.description} />
+            <p className="temperature">
+                {data.temp} <span>ºC</span>
+            </p>
+            <p className="description">{data.description}</p>
+            <h3 className="name">{data.name}</h3>
         </div>
     );
 };
