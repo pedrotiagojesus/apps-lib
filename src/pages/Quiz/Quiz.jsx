@@ -88,7 +88,6 @@ const Quiz = () => {
     };
 
     const endGame = () => {
-        console.log(timerId);
         clearInterval(timerId);
         setGameStage(stageArr[2].name);
         setCurrentQuestionIndex(0);
