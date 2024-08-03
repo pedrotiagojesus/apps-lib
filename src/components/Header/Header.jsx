@@ -10,6 +10,7 @@ const Header = () => {
                         APP's Lib
                     </Link>
                     <button
+                        id="button-menu-vertical-content"
                         className="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
