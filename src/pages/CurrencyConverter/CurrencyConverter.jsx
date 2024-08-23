@@ -11,7 +11,12 @@ import Loading from "../../components/Loading/Loading";
 // Axios
 import currencyConverterFetch from "../../axios/currencyConverter";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const CurrencyConverter = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [currencyNameArr, setCurrencyNameArr] = useState(null);
     const [currencyNameOption, setCurrencyNameOption] = useState([]);
 
@@ -144,8 +149,8 @@ const CurrencyConverter = () => {
     );
 
     return (
-        <div id="currency-converter">
-            <Card title="Currency converter" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
             {!rates && <Loading />}
         </div>
     );

@@ -3,7 +3,12 @@ import { useState } from "react";
 // Components
 import Card from "../../components/Card";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const NarcissisticNumber = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [number, setNumber] = useState(0);
     const [status, setStatus] = useState("");
 
@@ -65,8 +70,8 @@ const NarcissisticNumber = () => {
     );
 
     return (
-        <div id="narcissisticn-number">
-            <Card title="Narcissistic Number" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

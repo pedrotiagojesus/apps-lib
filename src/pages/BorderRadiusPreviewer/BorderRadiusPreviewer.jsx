@@ -8,7 +8,12 @@ import Card from "../../components/Card";
 import Input from "../../components/BorderRadiusPreviewer/Input";
 import CodeResult from "../../components/BorderRadiusPreviewer/CodeResult";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const BorderRadiusPreviewer = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [borderTopLeft, setBorderTopLeft] = useState(0);
     const [borderBottomLeft, setBorderBottomLeft] = useState(0);
     const [borderTopRight, setBorderTopRight] = useState(0);
@@ -73,8 +78,8 @@ const BorderRadiusPreviewer = () => {
     );
 
     return (
-        <div id="border-radius">
-            <Card title="Border-radius Previewer" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

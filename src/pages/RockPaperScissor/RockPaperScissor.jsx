@@ -6,6 +6,9 @@ import "./RockPaperScissor.css";
 // Components
 import Card from "../../components/Card";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const optionArr = [
     {
         name: "Rock",
@@ -25,6 +28,8 @@ const optionArr = [
 ];
 
 const RockPaperScissor = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [humanChoice, setHumanChoice] = useState("");
     const [computerChoice, setComputerChoice] = useState("");
     const [humanScore, setHumanScore] = useState(0);
@@ -92,8 +97,8 @@ const RockPaperScissor = () => {
     );
 
     return (
-        <div id="rock-papper-scissor">
-            <Card title="Rock Papper Scissor" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

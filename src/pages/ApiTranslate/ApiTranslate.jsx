@@ -14,7 +14,12 @@ import languageList from "../../data/Language.js";
 // Axios
 import { translateFetch } from "../../axios/config";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const ApiTranslate = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [loading, setLoading] = useState(false);
 
     // Language select box options
@@ -115,8 +120,8 @@ const ApiTranslate = () => {
     );
 
     return (
-        <div id="api-translate">
-            <Card title="API translate" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
             {loading && <Loading />}
         </div>
     );

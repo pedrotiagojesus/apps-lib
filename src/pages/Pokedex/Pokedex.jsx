@@ -3,6 +3,8 @@ import "./Pokedex.css";
 
 // Components
 import Card from "../../components/Card";
+
+// Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
 
 const Pokedex = () => {

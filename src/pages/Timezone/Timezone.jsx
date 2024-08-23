@@ -8,9 +8,15 @@ import "./Timezone.css";
 import timezoneList from "../../data/Timezone";
 
 // Components
+import Card from "../../components/Card";
 import TimezoneClock from "../../components/Timezone/TimezoneClock";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const Timezone = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const [timezoneSelected, setTimezoneSelected] = useState([localTimezone]);
 
@@ -36,30 +42,29 @@ const Timezone = () => {
         });
     }, [timezoneList]);
 
-    return (
-        <div id="timezone">
-            <div className="card">
-                <div className="card-header">
-                    <span>Timezone</span>
-                </div>
-                <div className="card-body">
-                    {timezoneOptions && timezoneOptions.length > 0 && (
-                        <Select
-                            className="select-theme mb-3 w-100"
-                            onChange={(e) => {
-                                addTimezone(e);
-                            }}
-                            options={timezoneOptions}
-                            defaultValue={timezoneOptions[0]}
-                        />
-                    )}
-                    <div className="row timezone-row">
-                        {timezoneSelected.map((timezone) => (
-                            <TimezoneClock key={timezone} timezone={timezone} />
-                        ))}
-                    </div>
-                </div>
+    const body = (
+        <>
+            {timezoneOptions && timezoneOptions.length > 0 && (
+                <Select
+                    className="select-theme mb-3 w-100"
+                    onChange={(e) => {
+                        addTimezone(e);
+                    }}
+                    options={timezoneOptions}
+                    defaultValue={timezoneOptions[0]}
+                />
+            )}
+            <div className="row timezone-row">
+                {timezoneSelected.map((timezone) => (
+                    <TimezoneClock key={timezone} timezone={timezone} />
+                ))}
             </div>
+        </>
+    );
+
+    return (
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

@@ -13,7 +13,12 @@ import { useToast } from "../../context/ToastContext";
 import Card from "../../components/Card";
 import Loading from "../../components/Loading/Loading";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const ShortUrl = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const { addToast } = useToast();
 
     const [longUrl, setLongUrl] = useState("");
@@ -113,8 +118,8 @@ const ShortUrl = () => {
     );
 
     return (
-        <div id="short-url">
-            <Card title="Short URL" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
             {loading && <Loading />}
         </div>
     );

@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 // CSS
 import "./Quiz.css";
 
@@ -10,7 +12,9 @@ import Header from "../../components/Quiz/Header";
 
 // Data
 import questionArr from "../../data/Quiz";
-import { useEffect, useState } from "react";
+
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
 
 const stageArr = [
     { id: 1, name: "start" },
@@ -19,6 +23,8 @@ const stageArr = [
 ];
 
 const Quiz = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [gameStage, setGameStage] = useState(stageArr[0].name);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [question, setQuestion] = useState(null);
@@ -110,9 +116,9 @@ const Quiz = () => {
     );
 
     return (
-        <>
-            <Card title="Quiz" body={body} />
-        </>
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
+        </div>
     );
 };
 

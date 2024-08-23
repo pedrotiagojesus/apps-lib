@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 // Components
+import Card from "../../components/Card";
 import Search from "../../components/Weather/Search";
 import CurrentWeather from "../../components/Weather/CurrentWeather";
 import Forecast from "../../components/Weather/Forecast";
@@ -8,7 +9,12 @@ import Forecast from "../../components/Weather/Forecast";
 // Axios
 import { openWeatherMapFetch } from "../../axios/config";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const Weather = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [city, setCity] = useState("");
     const [weather, setWeather] = useState(null);
     const [forecast, setForecast] = useState([]);
@@ -50,24 +56,22 @@ const Weather = () => {
         });
     }, [apiKey]);
 
+    const body = (
+        <>
+            <Search
+                city={city}
+                setCity={setCity}
+                searchWeather={searchWeather}
+            />
+
+            {weather && <CurrentWeather weather={weather} />}
+            {forecast && <Forecast forecastList={forecast} />}
+        </>
+    );
+
     return (
-        <div id="weather">
-            <div className="card">
-                <div className="card-header">
-                    <span>Weather</span>
-                </div>
-
-                <div className="card-body">
-                    <Search
-                        city={city}
-                        setCity={setCity}
-                        searchWeather={searchWeather}
-                    />
-
-                    {weather && <CurrentWeather weather={weather} />}
-                    {forecast && <Forecast forecastList={forecast} />}
-                </div>
-            </div>
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

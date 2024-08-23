@@ -9,8 +9,11 @@ import Square from "../../components/TicTacToe/Square";
 
 // Hooks
 import { Ai } from "../../hooks/TicTacToe/Ai";
+import { useCurrentModule } from "../../hooks/useCurrentModule";
 
 const TicTacToe = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [yourTurn, setYourTurn] = useState(true);
     const [symbolInUse, setSymbolInUse] = useState("fa-x");
@@ -121,8 +124,8 @@ const TicTacToe = () => {
     );
 
     return (
-        <div id="tic-tac-toe">
-            <Card title="Tic Tac Toe" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

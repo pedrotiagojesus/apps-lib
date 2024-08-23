@@ -7,6 +7,9 @@ import "./MemoryGame.css";
 import Board from "../../components/MemoryGame/Board";
 import Card from "../../components/Card";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const shuffleArray = (array) => {
     for (let index = array.length - 1; index > 0; index--) {
         const randomIndex = Math.floor(Math.random() * (index + 1));
@@ -29,6 +32,8 @@ const generateCardArr = () => {
 };
 
 const MemoryGame = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const playerAttempts = 10;
 
     const [cardArr, setCardArr] = useState(generateCardArr());
@@ -109,8 +114,8 @@ const MemoryGame = () => {
     );
 
     return (
-        <div id="memory-game">
-            <Card title="Memory Game" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

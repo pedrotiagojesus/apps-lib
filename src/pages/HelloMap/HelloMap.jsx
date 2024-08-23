@@ -12,7 +12,12 @@ import { helloFetch } from "../../axios/config";
 // Components
 import Card from "../../components/Card";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const HelloMap = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [map, setMap] = useState(null);
 
     useEffect(() => {
@@ -72,8 +77,8 @@ const HelloMap = () => {
     const body = <div id="map"></div>;
 
     return (
-        <div id="hello-app">
-            <Card title="Hello APP" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };

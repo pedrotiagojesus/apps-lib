@@ -1,18 +1,18 @@
-#hello-app > .card {
+#hello-map > .card {
     height: calc(
         100vh - var(--menu-horizontal-height) - var(--content-padding) -
             var(--content-padding)
     );
 }
 
-#hello-app #map {
+#hello-map #map {
     height: 100%;
 }
 
-#hello-app #map .leaflet-popup-content {
+#hello-map #map .leaflet-popup-content {
     font-size: 0.8rem;
 }
 
-#hello-app #map .leaflet-popup-content-wrapper {
+#hello-map #map .leaflet-popup-content-wrapper {
     border-radius: 3px;
 }

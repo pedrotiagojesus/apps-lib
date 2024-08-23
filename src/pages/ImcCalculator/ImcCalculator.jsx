@@ -11,7 +11,12 @@ import Calculator from "../../components/ImcCalculator/Calculator";
 import Table from "../../components/ImcCalculator/Table";
 import Card from "../../components/Card";
 
+// Hooks
+import { useCurrentModule } from "../../hooks/useCurrentModule";
+
 const ImcCalculator = () => {
+    const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+
     const [imc, setImc] = useState("");
     const [info, setInfo] = useState("");
     const [infoClass, setInfoClass] = useState("");
@@ -65,8 +70,8 @@ const ImcCalculator = () => {
     );
 
     return (
-        <div id="imc-calculator">
-            <Card title="IMC Calculator" body={body} />
+        <div id={moduleSlug}>
+            <Card title={moduleName} body={body} />
         </div>
     );
 };
