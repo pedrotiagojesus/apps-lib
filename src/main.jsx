@@ -32,6 +32,7 @@ import ImcCalculator from "./pages/ImcCalculator/ImcCalculator.jsx";
 import RockPaperScissor from "./pages/RockPaperScissor/RockPaperScissor.jsx";
 import Quiz from "./pages/Quiz/Quiz.jsx";
 import ShortUrl from "./pages/ShortUrl/ShortUrl.jsx";
+import Pokedex from "./pages/Pokedex/Pokedex.jsx";
 
 const router = createBrowserRouter([
     {
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/short-url",
                 element: <ShortUrl />,
+            },
+            {
+                path: "/apps-lib/pokedex",
+                element: <Pokedex />,
             },
         ],
     },
