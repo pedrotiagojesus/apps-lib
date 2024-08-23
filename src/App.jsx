@@ -1,18 +1,27 @@
 import { Outlet } from "react-router";
+
+// Component
 import Header from "./components/Header/Header";
 import Navigator from "./components/Navigator/Navigator";
+
+// Toast
+import ToastContainer from "./components/Toast/ToastContainer";
+import { ToastProvider } from "./context/ToastContext";
 
 function App() {
     return (
         <>
-            <main>
-                <Header />
-                <Navigator />
+            <ToastProvider>
+                <main>
+                    <Header />
+                    <Navigator />
 
-                <div className="content">
-                    <Outlet />
-                </div>
-            </main>
+                    <div className="content">
+                        <Outlet />
+                        <ToastContainer />
+                    </div>
+                </main>
+            </ToastProvider>
         </>
     );
 }

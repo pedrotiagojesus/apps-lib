@@ -4,7 +4,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.min.js";
+import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
+window.bootstrap = bootstrap;
 
 // Leaflet
 import "leaflet/dist/leaflet.css";
@@ -30,6 +31,7 @@ import MemoryGame from "./pages/MemoryGame/MemoryGame.jsx";
 import ImcCalculator from "./pages/ImcCalculator/ImcCalculator.jsx";
 import RockPaperScissor from "./pages/RockPaperScissor/RockPaperScissor.jsx";
 import Quiz from "./pages/Quiz/Quiz.jsx";
+import ShortUrl from "./pages/ShortUrl/ShortUrl.jsx";
 
 const router = createBrowserRouter([
     {
@@ -87,6 +89,10 @@ const router = createBrowserRouter([
             {
                 path: "/apps-lib/quiz",
                 element: <Quiz />,
+            },
+            {
+                path: "/apps-lib/short-url",
+                element: <ShortUrl />,
             },
         ],
     },

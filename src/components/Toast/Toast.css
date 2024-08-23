@@ -1,0 +1,5 @@
+.toast-container {
+    position: fixed;
+    right: var(--content-padding);
+    bottom: var(--content-padding);
+}
