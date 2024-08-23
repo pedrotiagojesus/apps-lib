@@ -55,6 +55,10 @@ const moduleArr = [
         name: "Quiz",
         description: "",
     },
+    {
+        name: "Short URL",
+        description: "",
+    },
 ];
 
 export default moduleArr;
