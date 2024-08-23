@@ -59,6 +59,10 @@ const moduleArr = [
         name: "Short URL",
         description: "",
     },
+    {
+        name: "Pokédex",
+        description: "",
+    },
 ];
 
 export default moduleArr;
