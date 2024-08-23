@@ -71,8 +71,6 @@ const CurrencyConverter = () => {
 
     const body = (
         <>
-            {!rates && <Loading />}
-
             <div className="row">
                 <div className="col-md-6">
                     <div className="mb-3">
@@ -148,6 +146,7 @@ const CurrencyConverter = () => {
     return (
         <div id="currency-converter">
             <Card title="Currency converter" body={body} />
+            {!rates && <Loading />}
         </div>
     );
 };

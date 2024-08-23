@@ -54,7 +54,6 @@ const ApiTranslate = () => {
 
     const body = (
         <>
-            {loading && <Loading />}
             <div className="mb-3">
                 <div className="d-flex justify-content-between align-items-center">
                     <label htmlFor="original-text" className="form-label mb-0">
@@ -118,6 +117,7 @@ const ApiTranslate = () => {
     return (
         <div id="api-translate">
             <Card title="API translate" body={body} />
+            {loading && <Loading />}
         </div>
     );
 };
