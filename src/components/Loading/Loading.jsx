@@ -1,10 +1,10 @@
-import { TrophySpin } from "react-loading-indicators";
+// CSS
 import "./Loading.css";
 
 const Loading = () => {
     return (
         <div className="loading">
-            <TrophySpin color="#32cd32" size="large" text="" textColor="" />
+            <span class="loader">L &nbsp; ading</span>
         </div>
     );
 };
