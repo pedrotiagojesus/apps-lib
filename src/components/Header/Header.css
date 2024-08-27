@@ -6,7 +6,7 @@
     right: 0;
     left: 0;
     border-bottom: 1px solid #31374a;
-    z-index: 3;
+    z-index: 4;
 
     --bs-emphasis-color-rgb: 255, 255, 255;
 }
