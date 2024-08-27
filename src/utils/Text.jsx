@@ -21,3 +21,28 @@ export const convertToTitleCase = (str) => {
             return word.charAt(0).toUpperCase().concat(word.substr(1));
         });
 };
+
+export const formatGenerationName = (generation) => {
+    const romanNumerals = {
+        i: "I",
+        ii: "II",
+        iii: "III",
+        iv: "IV",
+        v: "V",
+        vi: "VI",
+        vii: "VII",
+        viii: "VIII",
+        ix: "IX",
+        x: "X",
+    };
+
+    const parts = generation.split("-");
+    const generationName = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
+    const romanNumeral = romanNumerals[parts[1]];
+
+    return `${generationName} ${romanNumeral}`;
+};
+
+export const removeSlugStyle = (slug) => {
+    return slug.split(/[-_]/).join(" ");
+};
