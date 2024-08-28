@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "PokemonGB";
+    font-weight: 400;
+    font-style: normal;
+    src: local("PokemonGB"), url(./PokemonGB.ttf) format("opentype");
+    font-display: swap;
+}

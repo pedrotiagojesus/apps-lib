@@ -7,13 +7,13 @@ const Pokemon = ({ pokemon, pokemonSpecie }) => {
     return (
         <div id="pokemon" key={pokemon.name}>
             <div className="row">
-                <div className="col-md-5">
+                <div className="col-md-5 col-xl-4">
                     <BasicDetails
                         pokemon={pokemon}
                         pokemonSpecie={pokemonSpecie}
                     />
                 </div>
-                <div id="more-info" className="col-md-7">
+                <div id="more-info" className="col-md-7 col-xl-8 ">
                     <Stats statArr={pokemon.stats} />
                     <Sprite pokemon={pokemon} pokemonSpecie={pokemonSpecie} />
                 </div>

@@ -28,6 +28,7 @@ const Pokedex = () => {
     const [pokemon, setPokemon] = useState(null);
     const [pokemonSpecie, setPokemonSpecie] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [backgroundColor, setBackgroundColor] = useState("#fff");
 
     const handleSearch = async (e) => {
         e.preventDefault();
@@ -48,6 +49,7 @@ const Pokedex = () => {
                     axios.spread((pokemon, specie) => {
                         setPokemon(pokemon.data);
                         setPokemonSpecie(specie.data);
+                        setBackgroundColor(specie.data.color.name);
                     })
                 );
         } catch (error) {
@@ -85,7 +87,13 @@ const Pokedex = () => {
 
     return (
         <div id={moduleSlug}>
-            <Card title={moduleName} body={body} />
+            <Card
+                title={moduleName}
+                body={body}
+                styleBody={{
+                    backgroundColor: backgroundColor,
+                }}
+            />
             {loading && <Loading />}
         </div>
     );

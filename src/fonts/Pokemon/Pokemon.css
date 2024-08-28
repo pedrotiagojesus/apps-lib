@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "Pokemon";
+    font-weight: 400;
+    font-style: normal;
+    src: local("Pokemon"), url(./Pokemon.ttf) format("opentype");
+    font-display: swap;
+}

@@ -9,12 +9,7 @@ const BasicDetails = ({ pokemon, pokemonSpecie }) => {
     const pokemonGenus = pokemonGeneraEntry.genus;
 
     return (
-        <div
-            id="basic-detail"
-            style={{
-                backgroundColor: pokemonSpecie.color.name,
-            }}
-        >
+        <div id="basic-detail">
             <div className="identification">
                 <div className="block-name">
                     <div className="name">{pokemon.name}</div>
