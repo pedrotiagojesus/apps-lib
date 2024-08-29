@@ -1,0 +1,11 @@
+#weather-map #map {
+    height: 100%;
+}
+
+#weather-map.modal {
+    --bs-modal-footer-border-width: 0;
+}
+
+#weather-map .modal-footer {
+    padding-top: 0;
+}
