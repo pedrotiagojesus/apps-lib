@@ -42,6 +42,9 @@ const Weather = () => {
             );
             setWeather(responseWeather.data);
 
+            setLat(responseWeather.data.coord.lat);
+            setLng(responseWeather.data.coord.lon);
+
             const responseForecast = await openWeatherMapFetch.get(
                 `/forecast?appid=${apiKey}&q=${city}&units=metric`
             );
@@ -59,8 +62,17 @@ const Weather = () => {
     useEffect(() => {
         const fetchData = async () => {
             const coordenates = await currentPosition();
-            setLat(coordenates.lat);
-            setLng(coordenates.lng);
+
+            if (coordenates.msgError) {
+                addToast({
+                    title: "Weather",
+                    message: coordenates.msgError,
+                    status: "error",
+                });
+            } else {
+                setLat(coordenates.lat);
+                setLng(coordenates.lng);
+            }
         };
 
         fetchData();
@@ -104,7 +116,9 @@ const Weather = () => {
 
             {weather && <CurrentWeather weather={weather} />}
             {forecast && <Forecast forecastList={forecast} />}
-            <Map lat={lat} setLat={setLat} lng={lng} setLng={setLng} />
+            {lat && lng && (
+                <Map lat={lat} setLat={setLat} lng={lng} setLng={setLng} />
+            )}
         </>
     );
 

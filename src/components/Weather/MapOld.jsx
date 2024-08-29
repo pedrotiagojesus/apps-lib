@@ -7,30 +7,15 @@ const Map = ({ lat, setLat, lng, setLng }) => {
     const modalRef = useRef();
     const mapRef = useRef(null);
     const mapInstanceRef = useRef(null);
-    const markerRef = useRef(null);
+
+    let mapInstance = null;
 
     const [newLat, setNewLat] = useState(null);
     const [newLng, setNewLng] = useState(null);
 
-    useEffect(() => {
-        if (mapInstanceRef.current) {
-            return;
-        }
+    let marker = null;
 
-        const option = {};
-        mapInstanceRef.current = L.map(mapRef.current, option).setView(
-            [lat, lng],
-            10
-        );
-
-        const mapUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
-        const matAttr =
-            "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>";
-
-        L.tileLayer(mapUrl, {
-            attribution: matAttr,
-        }).addTo(mapInstanceRef.current);
-    }, []);
+    () => {};
 
     useEffect(() => {
         const modalElement = modalRef.current;
@@ -39,58 +24,65 @@ const Map = ({ lat, setLat, lng, setLng }) => {
             return;
         }
 
-        const handleModalShow = () => {
-            mapInstanceRef.current.setView([lat, lng], 10);
-        };
+        modalElement.addEventListener("show.bs.modal", async (event) => {
+            if (mapInstanceRef.current) {
+                mapInstanceRef.current.panTo(new L.LatLng(lat, lng));
 
-        const handleModalShown = () => {
-            mapInstanceRef.current.invalidateSize();
+                /*
+                var markers = L.markerClusterGroup();
+                markers.clearLayers();
+                */
+            }
+        });
 
-            mapInstanceRef.current.setView([lat, lng], 10);
+        modalElement.addEventListener("shown.bs.modal", async (event) => {
+            if (!mapRef.current) {
+                return;
+            }
+
+            if (!mapInstanceRef.current) {
+                const option = {};
+                mapInstanceRef.current = L.map(mapRef.current, option).setView(
+                    [lat, lng],
+                    10
+                );
+            }
+
+            const mapUrl = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
+            const matAttr =
+                "&copy; <a href='http://www.openstreetmap.org/copyright'>OpenStreetMap</a>";
+
+            L.tileLayer(mapUrl, {
+                attribution: matAttr,
+            }).addTo(mapInstanceRef.current);
 
             if (lat && lng) {
-                markerRef.current = L.marker([lat, lng]).addTo(
-                    mapInstanceRef.current
-                );
+                marker = L.marker([lat, lng]).addTo(mapInstanceRef.current);
             }
 
             mapInstanceRef.current.on("click", (e) => {
                 setNewLat(e.latlng.lat);
                 setNewLng(e.latlng.lng);
 
-                if (markerRef.current !== null) {
-                    mapInstanceRef.current.removeLayer(markerRef.current);
+                if (marker !== null) {
+                    mapInstanceRef.current.removeLayer(marker);
                 }
 
-                markerRef.current = L.marker([
-                    e.latlng.lat,
-                    e.latlng.lng,
-                ]).addTo(mapInstanceRef.current);
+                marker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(
+                    mapInstanceRef.current
+                );
             });
-        };
+        });
 
-        const handleModalHidden = () => {
-            if (markerRef.current) {
-                markerRef.current.remove();
-                markerRef.current = null;
+        modalElement.addEventListener("hidden.bs.modal", (event) => {
+            if (mapInstanceRef.current) {
+                var markers = L.markerClusterGroup();
+                markers.clearLayers();
+
+                // mapInstanceRef.current.remove();
+                // mapInstanceRef.current = null;
             }
-        };
-
-        modalElement.addEventListener("show.bs.modal", handleModalShow);
-        modalElement.addEventListener("shown.bs.modal", handleModalShown);
-        modalElement.addEventListener("hidden.bs.modal", handleModalHidden);
-
-        return () => {
-            modalElement.removeEventListener("show.bs.modal", handleModalShow);
-            modalElement.removeEventListener(
-                "shown.bs.modal",
-                handleModalShown
-            );
-            modalElement.removeEventListener(
-                "hidden.bs.modal",
-                handleModalHidden
-            );
-        };
+        });
     }, [lat, lng]);
 
     const onClickSelect = () => {
