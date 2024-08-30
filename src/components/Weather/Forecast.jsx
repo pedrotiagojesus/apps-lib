@@ -10,7 +10,7 @@ const Forecast = ({ forecastList }) => {
 
         dataArr.push({
             temp: `${forecast.main.temp} `,
-            image: `src/assets/Weather/${forecast.weather[0].icon}.png`,
+            image: `Weather/${forecast.weather[0].icon}.png`,
             description: forecast.weather[0].description,
             hour: hours,
         });

@@ -3,7 +3,7 @@ import "./CurrentWeather.css";
 const CurrentWeather = ({ weather }) => {
     const data = {
         temp: `${weather.main.temp} `,
-        image: `public/Weather/${weather.weather[0].icon}.png`,
+        image: `Weather/${weather.weather[0].icon}.png`,
         description: weather.weather[0].description,
         name: weather.name,
     };
