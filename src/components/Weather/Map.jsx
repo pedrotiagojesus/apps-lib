@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from "react";
 // CSS
 import "./Map.css";
 
+import markerIcon from "../../../node_modules/leaflet/dist/images/marker-icon.png";
+
 const Map = ({ lat, setLat, lng, setLng }) => {
     const modalRef = useRef();
     const mapRef = useRef(null);
@@ -11,6 +13,11 @@ const Map = ({ lat, setLat, lng, setLng }) => {
 
     const [newLat, setNewLat] = useState(null);
     const [newLng, setNewLng] = useState(null);
+
+    const myIcon = L.icon({
+        iconUrl: markerIcon,
+        // ...
+    });
 
     useEffect(() => {
         if (mapInstanceRef.current) {
@@ -49,9 +56,9 @@ const Map = ({ lat, setLat, lng, setLng }) => {
             mapInstanceRef.current.setView([lat, lng], 10);
 
             if (lat && lng) {
-                markerRef.current = L.marker([lat, lng]).addTo(
-                    mapInstanceRef.current
-                );
+                markerRef.current = L.marker([lat, lng], {
+                    icon: myIcon,
+                }).addTo(mapInstanceRef.current);
             }
 
             mapInstanceRef.current.on("click", (e) => {
@@ -62,10 +69,9 @@ const Map = ({ lat, setLat, lng, setLng }) => {
                     mapInstanceRef.current.removeLayer(markerRef.current);
                 }
 
-                markerRef.current = L.marker([
-                    e.latlng.lat,
-                    e.latlng.lng,
-                ]).addTo(mapInstanceRef.current);
+                markerRef.current = L.marker([e.latlng.lat, e.latlng.lng], {
+                    icon: myIcon,
+                }).addTo(mapInstanceRef.current);
             });
         };
 
