@@ -9,6 +9,7 @@ main > .content {
 main > .content .card {
     --bs-card-bg: #fff;
     --bs-card-height: 100%;
+    --bs-card-border-color: rgba(0, 0, 0, 0.125);
 }
 
 main > .content .card .card-header {
