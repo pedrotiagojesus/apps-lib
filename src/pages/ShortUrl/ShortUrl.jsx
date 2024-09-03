@@ -15,9 +15,11 @@ import Loading from "../../components/Loading/Loading";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const ShortUrl = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const { addToast } = useToast();
 

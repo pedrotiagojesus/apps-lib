@@ -10,9 +10,11 @@ import Square from "../../components/TicTacToe/Square";
 // Hooks
 import { Ai } from "../../hooks/TicTacToe/Ai";
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const TicTacToe = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [squares, setSquares] = useState(Array(9).fill(null));
     const [yourTurn, setYourTurn] = useState(true);

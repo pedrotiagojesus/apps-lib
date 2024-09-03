@@ -15,6 +15,7 @@ import questionArr from "../../data/Quiz";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const stageArr = [
     { id: 1, name: "start" },
@@ -24,6 +25,7 @@ const stageArr = [
 
 const Quiz = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [gameStage, setGameStage] = useState(stageArr[0].name);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);

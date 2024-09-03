@@ -8,6 +8,7 @@ import Card from "../../components/Card";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const optionArr = [
     {
@@ -29,6 +30,7 @@ const optionArr = [
 
 const RockPaperScissor = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [humanChoice, setHumanChoice] = useState("");
     const [computerChoice, setComputerChoice] = useState("");

@@ -9,7 +9,12 @@ import moduleArr from "../../data/Module";
 // Utils
 import { slugify } from "../../utils/Text";
 
+// Hooks
+import documentTitle from "../../hooks/useDocumentTitle";
+
 const Homepage = () => {
+    documentTitle("Homepage");
+
     return (
         <div id="homepage-content" className="row">
             {moduleArr.map((module) => (

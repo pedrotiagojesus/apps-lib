@@ -14,9 +14,11 @@ import Card from "../../components/Card";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle.jsx";
 
 const HelloMap = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [map, setMap] = useState(null);
 

@@ -10,9 +10,11 @@ import CodeResult from "../../components/BorderRadiusPreviewer/CodeResult";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const BorderRadiusPreviewer = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [borderTopLeft, setBorderTopLeft] = useState(0);
     const [borderBottomLeft, setBorderBottomLeft] = useState(0);

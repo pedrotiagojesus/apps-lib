@@ -13,9 +13,11 @@ import TimezoneClock from "../../components/Timezone/TimezoneClock";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const Timezone = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const [timezoneSelected, setTimezoneSelected] = useState([localTimezone]);

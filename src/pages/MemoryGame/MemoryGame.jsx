@@ -9,6 +9,7 @@ import Card from "../../components/Card";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const shuffleArray = (array) => {
     for (let index = array.length - 1; index > 0; index--) {
@@ -33,6 +34,7 @@ const generateCardArr = () => {
 
 const MemoryGame = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const playerAttempts = 10;
 

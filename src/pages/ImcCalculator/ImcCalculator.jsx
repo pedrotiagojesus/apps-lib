@@ -13,9 +13,11 @@ import Card from "../../components/Card";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle.jsx";
 
 const ImcCalculator = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [imc, setImc] = useState("");
     const [info, setInfo] = useState("");

@@ -18,9 +18,11 @@ import { useCurrentModule } from "../../hooks/useCurrentModule";
 
 // Context
 import { useToast } from "../../context/ToastContext";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const Pokedex = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const { addToast } = useToast();
 

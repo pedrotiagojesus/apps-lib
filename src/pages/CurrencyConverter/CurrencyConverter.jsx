@@ -13,9 +13,11 @@ import currencyConverterFetch from "../../axios/currencyConverter";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const CurrencyConverter = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [currencyNameArr, setCurrencyNameArr] = useState(null);
     const [currencyNameOption, setCurrencyNameOption] = useState([]);

@@ -16,9 +16,11 @@ import { translateFetch } from "../../axios/config";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle.jsx";
 
 const ApiTranslate = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [loading, setLoading] = useState(false);
 

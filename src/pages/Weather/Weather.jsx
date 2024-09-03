@@ -19,9 +19,11 @@ import { useGeolocation } from "../../hooks/useGeolocation";
 
 // Context
 import { useToast } from "../../context/ToastContext";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const Weather = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const { addToast } = useToast();
 

@@ -5,9 +5,11 @@ import Card from "../../components/Card";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 const NarcissisticNumber = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
+    documentTitle(moduleName);
 
     const [number, setNumber] = useState(0);
     const [status, setStatus] = useState("");
