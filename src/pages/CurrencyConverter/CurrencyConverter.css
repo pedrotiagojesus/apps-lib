@@ -1,7 +1,29 @@
-#currency-converter .form-select {
-    background-color: transparent;
-    border-top-color: transparent;
-    border-right-color: transparent;
-    border-left-color: transparent;
-    padding-left: 0;
+#currency-converter form {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+#currency-converter form > div {
+    flex: 1 1 auto;
+}
+
+#currency-converter form .form-select {
+    margin-bottom: 0;
+}
+
+#currency-converter .result {
+    display: flex;
+    flex-direction: column;
+}
+
+#currency-converter .result .before {
+    font-size: 1.25rem;
+    margin: 0;
+    color: #5c667b;
+}
+
+#currency-converter .result .after {
+    font-size: 1.75rem;
+    margin: 0;
 }

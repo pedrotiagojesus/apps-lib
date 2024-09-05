@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import Select from "react-select";
 
 // CSS
 import "./CurrencyConverter.css";
@@ -76,76 +75,91 @@ const CurrencyConverter = () => {
         }
     }, [rates, fromCurrency, toCurrency, amount]);
 
+    const handleSwap = () => {
+        const tempFrom = fromCurrency;
+        const tempTo = toCurrency;
+
+        setFromCurrency(tempTo);
+        setToCurrency(tempFrom);
+    };
+
     const body = (
         <>
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="mb-3">
-                        {currencyNameOption &&
-                            currencyNameOption.length > 0 && (
-                                <select
-                                    className="form-select w-auto"
-                                    onChange={(e) =>
-                                        setFromCurrency(e.target.value)
-                                    }
-                                    value={fromCurrency}
-                                >
-                                    {currencyNameOption.map((currency) => (
-                                        <option
-                                            key={`from-${currency.value}`}
-                                            value={currency.value}
-                                        >
-                                            {currency.label}
-                                        </option>
-                                    ))}
-                                </select>
-                            )}
-                        <input
-                            className="form-control"
-                            type="number"
-                            value={amount}
-                            onInput={(e) => setAmount(e.target.value)}
-                        />
-                    </div>
+            <form>
+                <div>
+                    <label htmlFor="amout" className="form-label">
+                        Amount
+                    </label>
+                    <input
+                        className="form-control"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        value={amount}
+                        onInput={(e) => setAmount(e.target.value)}
+                    />
                 </div>
-            </div>
 
-            <div className="row">
-                <div className="col-md-6 text-center">
-                    <i className="fa-solid fa-down-long fa-3x mb-3"></i>
-                </div>
-            </div>
-
-            <div className="row">
-                <div className="col-md-6">
-                    <div className="mb-3">
-                        {currencyNameOption &&
-                            currencyNameOption.length > 0 && (
-                                <select
-                                    className="form-select w-auto"
-                                    onChange={(e) =>
-                                        setToCurrency(e.target.value)
-                                    }
-                                    value={toCurrency}
+                {currencyNameOption && currencyNameOption.length > 0 && (
+                    <div>
+                        <label htmlFor="from-currency" className="form-label">
+                            From
+                        </label>
+                        <select
+                            className="form-select"
+                            onChange={(e) => setFromCurrency(e.target.value)}
+                            value={fromCurrency}
+                        >
+                            {currencyNameOption.map((currency) => (
+                                <option
+                                    key={`from-${currency.value}`}
+                                    value={currency.value}
                                 >
-                                    {currencyNameOption.map((currency) => (
-                                        <option
-                                            key={`to-${currency.value}`}
-                                            value={currency.value}
-                                        >
-                                            {currency.label}
-                                        </option>
-                                    ))}
-                                </select>
-                            )}
-                        <input
-                            className="form-control"
-                            type="number"
-                            value={convertedAmount}
-                            readOnly
-                        />
+                                    {currency.label}
+                                </option>
+                            ))}
+                        </select>
                     </div>
-                </div>
+                )}
+
+                <button
+                    className="btn btn-primary rounded-circle align-self-end"
+                    type="button"
+                    onClick={() => handleSwap()}
+                >
+                    <i className="fa-solid fa-right-left"></i>
+                </button>
+
+                {currencyNameOption && currencyNameOption.length > 0 && (
+                    <div>
+                        <label htmlFor="to-currency" className="form-label">
+                            To
+                        </label>
+                        <select
+                            className="form-select"
+                            onChange={(e) => setToCurrency(e.target.value)}
+                            value={toCurrency}
+                        >
+                            {currencyNameOption.map((currency) => (
+                                <option
+                                    key={`to-${currency.value}`}
+                                    value={currency.value}
+                                >
+                                    {currency.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                )}
+            </form>
+
+            <div className="result">
+                <p className="before">
+                    {amount} {fromCurrency} =
+                </p>
+                <p className="after">
+                    {convertedAmount} {toCurrency}
+                </p>
             </div>
         </>
     );
