@@ -24,15 +24,20 @@
 
 #border-radius-previewer #display-code {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    max-width: 20rem;
+    min-width: 20rem;
+    margin: 0 auto;
+    background-color: var(--bs-border-color);
 }
 
 #border-radius-previewer #display-code pre {
-    max-width: 20rem;
-    border: 2px solid var(--bs-border-color);
     padding: 1rem;
     margin: 0;
-    min-width: 20rem;
+}
+
+#border-radius-previewer #display-code .btn {
+    --bs-btn-border-radius: 0;
 }
 
 /* SM */

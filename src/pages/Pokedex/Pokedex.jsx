@@ -15,10 +15,10 @@ import Loading from "../../components/Loading/Loading";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
+import documentTitle from "../../hooks/useDocumentTitle";
 
 // Context
 import { useToast } from "../../context/ToastContext";
-import documentTitle from "../../hooks/useDocumentTitle";
 
 const Pokedex = () => {
     const { name: moduleName, slug: moduleSlug } = useCurrentModule();
