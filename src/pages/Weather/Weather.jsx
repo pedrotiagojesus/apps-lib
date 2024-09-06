@@ -11,7 +11,7 @@ import Forecast from "../../components/Weather/Forecast";
 import Map from "../../components/Weather/Map";
 
 // Axios
-import { openWeatherMapFetch } from "../../axios/config";
+import openWeatherMapFetch from "../../axios/weather";
 
 // Hooks
 import { useCurrentModule } from "../../hooks/useCurrentModule";
@@ -48,7 +48,7 @@ const Weather = () => {
             setLng(responseWeather.data.coord.lon);
 
             const responseForecast = await openWeatherMapFetch.get(
-                `/forecast?appid=${apiKey}&q=${city}&units=metric`
+                `/forecast/daily?appid=${apiKey}&q=${city}&units=metric`
             );
             setForecast(responseForecast.data.list.slice(0, 5));
         } catch (error) {
@@ -83,13 +83,13 @@ const Weather = () => {
     useEffect(() => {
         const fetchData = async () => {
             const responseWeather = await openWeatherMapFetch.get(
-                `/weather?lat=${lat}&lon=${lng}&APPID=${apiKey}&units=metric`
+                `/weather?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`
             );
 
             setWeather(responseWeather.data);
 
             const responseForecast = await openWeatherMapFetch.get(
-                `/forecast?lat=${lat}&lon=${lng}&APPID=${apiKey}&units=metric`
+                `/forecast?lat=${lat}&lon=${lng}&appid=${apiKey}&units=metric`
             );
 
             setForecast(responseForecast.data.list.slice(0, 5));
@@ -116,8 +116,9 @@ const Weather = () => {
                 searchWeather={searchWeather}
             />
 
-            {weather && <CurrentWeather weather={weather} />}
-            {forecast && <Forecast forecastList={forecast} />}
+            {weather && forecast && (
+                <CurrentWeather weather={weather} forecastList={forecast} />
+            )}
             {lat && lng && (
                 <Map lat={lat} setLat={setLat} lng={lng} setLng={setLng} />
             )}

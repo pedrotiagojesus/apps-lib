@@ -1,0 +1,97 @@
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 100;
+    font-style: normal;
+    src: local("NotoSans"), url(./NotoSans-Thin.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 300;
+    font-style: normal;
+    src: local("NotoSans"), url(./NotoSans-Light.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 400;
+    font-style: normal;
+    src: local("NotoSans"), url(./NotoSans-Regular.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 500;
+    font-style: normal;
+    src: local("NotoSans"), url(./NotoSans-Medium.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 700;
+    font-style: normal;
+    src: local("NotoSans"), url(./NotoSans-Bold.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 900;
+    font-style: normal;
+    src: local("NotoSans"), url(./NotoSans-Black.ttf) format("opentype");
+    font-display: swap;
+}
+
+/* Italic */
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 100;
+    font-style: italic;
+    src: local("NotoSans"), url(./NotoSans-ThinItalic.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 300;
+    font-style: italic;
+    src: local("NotoSans"), url(./NotoSans-LightItalic.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 400;
+    font-style: italic;
+    src: local("NotoSans"), url(./NotoSans-Italic.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 500;
+    font-style: italic;
+    src: local("NotoSans"), url(./NotoSans-MediumItalic.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 700;
+    font-style: italic;
+    src: local("NotoSans"), url(./NotoSans-BoldItalic.ttf) format("opentype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NotoSans";
+    font-weight: 900;
+    font-style: italic;
+    src: local("NotoSans"), url(./NotoSans-BlackItalic.ttf) format("opentype");
+    font-display: swap;
+}

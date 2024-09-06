@@ -3,9 +3,9 @@ import axios from "axios";
 
 // CSS
 import "./Pokedex.css";
-import pokedexFetch from "../../axios/pokedex";
 
 // Axios
+import pokedexFetch from "../../axios/pokedex";
 
 // Components
 import Card from "../../components/Card";

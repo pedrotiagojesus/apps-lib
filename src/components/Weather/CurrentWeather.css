@@ -1,25 +1,97 @@
 #current-weather {
+    font-family: "NotoSans";
+}
+
+#current-weather .card {
+    --bs-card-height: 400px;
+    --bs-card-bg: #a8dcff;
+    --bs-card-color: #77c7fc;
+    --bs-card-border-radius: 16px;
+
+    margin: 0 auto;
+    width: 500px;
+    box-shadow: 0 10px 16px #c9e9ff;
+    overflow: hidden;
+}
+
+#current-weather .card-text {
+    color: #474747;
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding: 1rem 2rem;
+    position: relative;
+    flex: 1 1 auto;
+}
+
+#current-weather .card-text .temp {
+    font-size: 1.5rem;
+    opacity: 0.6;
+    margin-bottom: 0.25rem;
+}
+
+#current-weather .card-text .weather {
+    font-size: 1.5rem;
+    opacity: 0.6;
+    margin-bottom: 0.25rem;
+    text-transform: capitalize;
+}
+
+#current-weather .card-text img {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
+    animation: pulse 1s infinite;
+}
+
+#current-weather .card-text .locale {
+    font-size: 1.25rem;
+    opacity: 0.6;
+    margin-bottom: 0;
+}
+
+#current-weather .card-bottom {
+    background-color: #77c7fc;
+    border: 1px solid;
+    border-radius: 0 0 16px 16px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
 }
 
-#current-weather .temperature {
-    margin-bottom: 0;
-    font-size: 2rem;
+#current-weather .forecast {
+    flex: 1 1 auto;
 }
 
-#current-weather .temperature .span {
-    font-size: 1.25rem;
+#current-weather .week {
+    text-align: center;
+    flex: 1 1 auto;
 }
 
-#current-weather .description {
-    margin-bottom: 0.5rem;
-    font-size: 1.25rem;
+#current-weather .day {
+    color: #474747;
+    font-weight: bold;
+    font-size: 0.9rem;
 }
 
-#current-weather .name {
+#current-weather .degrees {
+    color: #474747;
+    font-weight: bold;
     font-size: 1rem;
-    margin-bottom: 0;
+}
+
+#current-weather .card-bottom img {
+    max-width: 2.5rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

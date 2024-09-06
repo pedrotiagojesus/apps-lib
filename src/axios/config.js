@@ -1,10 +1,5 @@
 import axios from "axios";
 
-// Weather
-const openWeatherMapFetch = axios.create({
-    baseURL: "https://api.openweathermap.org/data/2.5",
-});
-
 // Translation
 const translateApiKey = import.meta.env.VITE_TRANSLATE_API_KEY || "";
 
@@ -22,4 +17,4 @@ const helloFetch = axios.create({
     baseURL: "https://hellosalut.stefanbohacek.dev",
 });
 
-export { openWeatherMapFetch, translateFetch, helloFetch };
+export { translateFetch, helloFetch };
