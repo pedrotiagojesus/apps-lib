@@ -61,7 +61,7 @@ const ApiTranslate = () => {
 
     const body = (
         <>
-            <div className="mb-3">
+            <div>
                 <div className="d-flex justify-content-between align-items-center">
                     <label htmlFor="original-text" className="form-label mb-0">
                         Text to translate

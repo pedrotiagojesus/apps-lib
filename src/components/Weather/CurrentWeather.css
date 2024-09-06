@@ -10,6 +10,7 @@
 
     margin: 0 auto;
     width: 500px;
+    max-width: 100%;
     box-shadow: 0 10px 16px #c9e9ff;
     overflow: hidden;
 }

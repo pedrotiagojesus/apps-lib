@@ -38,6 +38,10 @@ main .select-theme {
     box-shadow: none;
 }
 
+.leaflet-pane {
+    z-index: 1;
+}
+
 /* SM */
 
 @media (min-width: 576px) {
