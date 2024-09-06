@@ -58,6 +58,10 @@ const NarcissisticNumber = () => {
                     </button>
                 </div>
             </div>
+            <p>
+                Is a number that is the sum of its own digits each raised to the
+                power of the number of digits.
+            </p>
             {status === "success" && (
                 <div className="alert alert-success" role="alert">
                     Number <strong>{number}</strong> is a narcissistic number
