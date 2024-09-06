@@ -5,27 +5,35 @@ const TimezoneClock = ({ timezone }) => {
     const [timeAnalog, setTimeAnalog] = useState("");
     const [time, setTime] = useState("");
 
+    const formatTime = () => {
+        const date = new Date();
+
+        // display the date and time in PST timezone
+        let options = {
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric",
+            timeZone: timezone,
+        };
+
+        const timeAnalogString = date.toLocaleString("en", {
+            timeZone: timezone,
+        });
+        setTimeAnalog(new Date(timeAnalogString));
+
+        const timeString = date.toLocaleTimeString("pt", options);
+        setTime(timeString);
+    };
+
     useEffect(() => {
         const intervalId = setInterval(() => {
-            const date = new Date();
-
-            // display the date and time in PST timezone
-            let options = {
-                hour: "numeric",
-                minute: "numeric",
-                second: "numeric",
-                timeZone: timezone,
-            };
-
-            const timeAnalogString = date.toLocaleString("en", {
-                timeZone: timezone,
-            });
-            setTimeAnalog(new Date(timeAnalogString));
-
-            const timeString = date.toLocaleTimeString("pt", options);
-            setTime(timeString);
+            formatTime();
         }, 1000);
     }, [timezone]);
+
+    useEffect(() => {
+        formatTime();
+    }, []);
 
     return (
         <div className="col-lg-3">
