@@ -21,8 +21,8 @@ const CurrentWeather = ({ weather, forecastList }) => {
                 </div>
 
                 <div className="card-bottom">
-                    {forecastList.map((forecast) => (
-                        <Forecast forecast={forecast} />
+                    {forecastList.map((forecast, index) => (
+                        <Forecast key={index} forecast={forecast} />
                     ))}
                 </div>
             </div>
