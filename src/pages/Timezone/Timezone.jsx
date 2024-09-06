@@ -34,7 +34,7 @@ const Timezone = () => {
     const [timezoneOptions, setTimezoneOptions] = useState([]);
 
     useEffect(() => {
-        const opt = { value: "", label: "Selecione um fuso horário" };
+        const opt = { value: "", label: "Select timezone" };
         setTimezoneOptions((prevArray) => [...prevArray, opt]);
 
         timezoneList.map((timezone) => {
